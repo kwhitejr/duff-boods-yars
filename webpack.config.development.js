@@ -2,6 +2,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 const config = Object.create(baseConfig);
 
@@ -47,6 +48,10 @@ config.postcss = function postcss() {
 
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
+  new HtmlWebpackPlugin({
+    template: 'src/index.html',
+    inject: true
+  }),
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
     '__DEV__': true,
