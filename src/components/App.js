@@ -1,16 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+const App = ({ children }) => (
+  <div className="container">
+    <h1>YARS</h1>
+    {children}
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <h1>YARS!</h1>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  children: PropTypes.element
+};
+
+export default App;
