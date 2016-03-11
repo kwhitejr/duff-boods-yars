@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background-color: #eef3f5;
+  font-family: Helvetica Neue, Helvetica, Arial;
+}
