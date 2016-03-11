@@ -1,21 +1,19 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
-import { syncHistory } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import rootReducer from 'reducers';
 
-const router = syncHistory(hashHistory);
+const router = routerMiddleware(hashHistory);
 
 const middleware = [thunk, router];
 
 const enhancers = compose(
-  applyMiddleware(thunk, router)
+  applyMiddleware(...middleware)
 );
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState = {}) {
   const store = createStore(rootReducer, initialState, enhancers);
-
-  router.listenForReplays(store);
 
   if (module.hot) {
     module.hot.accept('./reducers', () =>
