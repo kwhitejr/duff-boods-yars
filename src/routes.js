@@ -1,14 +1,13 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from 'components/App';
+import Counter from 'components/Counter';
 import NotFound from 'components/NotFound';
 
-// <IndexRoute component={Home} />
-
 export default (
-  <Router>
-    <Route path="/" component={App}>
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
+  <Route path="/" component={App}>
+    <IndexRoute component={Counter} />
+    <Route path="counter" component={Counter} />
+    <Route path="*" component={NotFound} />
+  </Route>
 );

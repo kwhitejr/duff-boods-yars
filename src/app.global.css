@@ -9,4 +9,9 @@ body {
   height: 100vh;
   background-color: #eef3f5;
   font-family: Helvetica Neue, Helvetica, Arial;
+  text-align: center;
+}
+
+button {
+  padding: 5px;
 }
