@@ -31,7 +31,6 @@ class Home extends Component {
 
   render() {
     const { todo: { items } } = this.props;
-    console.log(items);
 
     return (
       <div className={styles.base}>

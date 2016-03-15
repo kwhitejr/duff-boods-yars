@@ -1,0 +1,6 @@
+@value dark from 'styles/colors';
+
+h1 {
+  text-align: center;
+  color: dark;
+}
