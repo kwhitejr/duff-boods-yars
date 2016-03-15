@@ -1,3 +1,5 @@
+@value whiteSmoke from 'styles/colors';
+
 .list {
   margin-top: 2rem;
   list-style: none;
@@ -5,7 +7,7 @@
 
 .item {
   padding: 1rem;
-  border-top: 1px solid #eef3f5;
-  border-bottom: 1px solid #eef3f5;
+  border-top: 1px solid whiteSmoke;
+  border-bottom: 1px solid whiteSmoke;
   background: #fff;
 }
