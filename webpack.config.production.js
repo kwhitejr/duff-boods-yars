@@ -24,10 +24,11 @@ config.module.loaders.push({
 
 config.postcss = function postcss() {
   return [
+    require('postcss-modules-values'),
     require('postcss-import'),
     require('postcss-nested'),
-    require('postcss-modules-values'),
-    require('rucksack-css')
+    require('rucksack-css'),
+    require('autoprefixer')({ browsers: ['last 2 versions'] }),
   ];
 };
 
@@ -61,7 +62,7 @@ config.plugins.push(
       'NODE_ENV': JSON.stringify('production')
     }
   }),
-  new ExtractTextPlugin('style.css', { allChunks: true })
+  new ExtractTextPlugin('styles.css', { allChunks: true })
 );
 
 module.exports = config;
