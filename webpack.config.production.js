@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
-const config = Object.create(baseConfig);
+const config = Object.assign({}, baseConfig);
 
 config.devtool = 'source-map';
 
