@@ -1,4 +1,4 @@
-@value whiteSmoke from 'styles/colors';
+@value whiteSmoke from 'styles/utils/colors';
 
 .list {
   margin-top: 2rem;

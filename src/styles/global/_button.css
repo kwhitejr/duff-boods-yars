@@ -1,4 +1,4 @@
-@value lite, whiteSmoke from 'styles/colors';
+@value lite, whiteSmoke from 'styles/utils/colors';
 
 button {
   border: 1px solid whiteSmoke;

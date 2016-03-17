@@ -1,4 +1,7 @@
 :global {
-  /* import base/index.css */
-  @import 'styles/base';
+  /* Global styles */
+  @import 'styles/global/_base';
+  @import 'styles/global/_heading';
+  @import 'styles/global/_input';
+  @import 'styles/global/_button';
 }

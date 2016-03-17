@@ -1,3 +1,5 @@
+@value lite from 'styles/utils/colors';
+
 .base {
   margin: 3rem auto;
   width: 100%;
@@ -17,6 +19,6 @@
   font-weight: 300;
   background: #eef3f5;
   outline: 0;
-  border: 1px solid rgba(#ddd, 0.7);
+  border: 1px solid rgba(#ddd, .7);
   border-radius: 2px;
 }
