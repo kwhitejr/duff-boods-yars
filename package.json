@@ -38,6 +38,7 @@
     "postcss-modules-values": "^1.1.1",
     "postcss-nested": "^1.0.0",
     "rucksack-css": "^0.8.5",
+    "sanitize.css": "^3.3.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
