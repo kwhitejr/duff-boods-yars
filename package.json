@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Yet Another React Starter",
   "scripts": {
+    "lint": "eslint src *.js",
     "clean": "rm -rf dist",
     "dev": "webpack-dev-server --config webpack.config.development.js",
     "prod": "NODE_ENV=production webpack --config webpack.config.production.js"
@@ -26,7 +27,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
-    "eslint": "^2.2.0",
+    "eslint": "~2.2.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.2.1",
     "extract-text-webpack-plugin": "^1.0.1",
