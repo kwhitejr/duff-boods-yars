@@ -19,7 +19,7 @@ config.devServer = {
   inline: true,
   progress: true,
   contentBase: './dist',
-  stats: { colors: true }
+  stats: { colors: true },
 };
 
 config.module.loaders.push({
@@ -27,8 +27,8 @@ config.module.loaders.push({
   loaders: [
     'style-loader',
     'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-    'postcss-loader'
-  ]
+    'postcss-loader',
+  ],
 });
 
 config.postcss = function postcss() {
@@ -44,14 +44,14 @@ config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
     template: 'src/index.html',
-    inject: true
+    inject: true,
   }),
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
-    '__DEV__': true,
+    __DEV__: true,
     'process.env': {
-      'NODE_ENV': JSON.stringify('development')
-    }
+      NODE_ENV: JSON.stringify('development'),
+    },
   })
 );
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addItem } from 'actions/todo';
@@ -7,12 +7,17 @@ import Input from 'components/Input';
 import List from 'components/List';
 
 class Home extends Component {
+  static propTypes = {
+    todo: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  };
+
   constructor() {
     super();
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
     this.state = {
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -52,7 +57,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    todo: state.todo
+    todo: state.todo,
   };
 }
 

@@ -12,7 +12,7 @@ const Input = ({ id, className, type, placeholder, value, onChange, onKeyDown })
 );
 
 Input.defaultProps = {
-  type: 'text'
+  type: 'text',
 };
 
 Input.propTypes = {
@@ -22,7 +22,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
-  onKeyDown: PropTypes.func
+  onKeyDown: PropTypes.func,
 };
 
 export default Input;

@@ -17,8 +17,8 @@ config.module.loaders.push({
   test: /\.css$/,
   loader: ExtractTextPlugin.extract(
     'style-loader',
-    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-  )
+    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' // eslint-disable-line
+  ),
 });
 
 config.postcss = function postcss() {
@@ -35,8 +35,8 @@ config.plugins.push(
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
-    }
+      warnings: false,
+    },
   }),
   new HtmlWebpackPlugin({
     template: 'src/index.html',
@@ -52,13 +52,13 @@ config.plugins.push(
       minifyCSS: true,
       minifyURLs: true,
     },
-    inject: true
+    inject: true,
   }),
   new webpack.DefinePlugin({
-    '__DEV__': false,
+    __DEV__: false,
     'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
+      NODE_ENV: JSON.stringify('production'),
+    },
   }),
   new ExtractTextPlugin('styles.css', { allChunks: true })
 );

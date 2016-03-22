@@ -6,7 +6,7 @@ import todo from 'reducers/todo';
 const rootReducer = combineReducers({
   counter,
   todo,
-  routing
+  routing,
 });
 
 export default rootReducer;
