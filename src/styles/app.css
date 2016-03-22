@@ -3,8 +3,8 @@
   @import 'sanitize.css/sanitize.css';
 
   /* Global styles */
-  @import 'styles/global/_base';
-  @import 'styles/global/_heading';
-  @import 'styles/global/_input';
-  @import 'styles/global/_button';
+  @import 'styles/global/_base.css';
+  @import 'styles/global/_heading.css';
+  @import 'styles/global/_input.css';
+  @import 'styles/global/_button.css';
 }

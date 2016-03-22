@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import routes from 'routes';
 import configureStore from 'store';
-import 'styles/app';
+import 'styles/app.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);

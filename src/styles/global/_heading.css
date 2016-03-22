@@ -1,4 +1,4 @@
-@value dark from 'styles/utils/colors';
+@value dark from 'styles/utils/colors.css';
 
 h1 {
   text-align: center;

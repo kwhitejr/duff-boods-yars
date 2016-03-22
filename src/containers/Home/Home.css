@@ -1,4 +1,4 @@
-@value lite from 'styles/utils/colors';
+@value lite from 'styles/utils/colors.css';
 
 .base {
   margin: 3rem auto;
