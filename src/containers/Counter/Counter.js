@@ -1,20 +1,40 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import * as CounterActions from 'actions/counter';
+import { increment, decrement, incrementIfOdd, incrementAsync } from 'actions/counter';
 
 class Counter extends Component {
   static propTypes = {
-    increment: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
-    incrementAsync: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
+  constructor() {
+    super();
+    this._decrement = this._decrement.bind(this);
+    this._increment = this._increment.bind(this);
+    this._incrementIfOdd = this._incrementIfOdd.bind(this);
+    this._incrementAsync = this._incrementAsync.bind(this);
+  }
+
+  _decrement() {
+    this.props.dispatch(decrement());
+  }
+
+  _increment() {
+    this.props.dispatch(increment());
+  }
+
+  _incrementIfOdd() {
+    this.props.dispatch(incrementIfOdd());
+  }
+
+  _incrementAsync() {
+    this.props.dispatch(incrementAsync(2000));
+  }
+
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
+    const { counter } = this.props;
     return (
       <div>
         <div>
@@ -24,10 +44,10 @@ class Counter extends Component {
           {counter}
         </div>
         <div>
-          <button onClick={increment}> + </button>
-          <button onClick={decrement}> - </button>
-          <button onClick={incrementIfOdd}> odd </button>
-          <button onClick={() => incrementAsync()}> async </button>
+          <button onClick={this._increment}> + </button>
+          <button onClick={this._decrement}> - </button>
+          <button onClick={this._incrementIfOdd}> odd </button>
+          <button onClick={this._incrementAsync}> async </button>
         </div>
       </div>
     );
@@ -40,8 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps)(Counter);
