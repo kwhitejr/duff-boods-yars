@@ -33,6 +33,7 @@ config.module.loaders.push({
 
 config.postcss = function postcss() {
   return [
+    require('stylelint'),
     require('postcss-modules-values'),
     require('postcss-import'),
     require('postcss-nested'),
