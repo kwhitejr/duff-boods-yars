@@ -1,6 +1,6 @@
-@value dark from "styles/utils/colors.css";
+@value white from "styles/utils/colors.css";
 
 h1 {
   text-align: center;
-  color: dark;
+  color: white;
 }

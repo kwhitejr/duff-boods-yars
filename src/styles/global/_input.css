@@ -1,3 +1,5 @@
+@value dark from "styles/utils/colors.css";
+
 input {
-  /* global input styles */
+  color: dark;
 }

@@ -1,4 +1,4 @@
-@value white from "styles/utils/colors.css";
+@value dark, white, gradientTop, gradientBottom from "styles/utils/colors.css";
 
 * {
   margin: 0;
@@ -9,7 +9,5 @@
 body {
   height: 100vh;
   font-family: "Helvetica Neue", Helvetica, Arial;
-  background: white;
-  color: #4d4d4d;
-  font-weight: 300;
+  color: white;
 }
