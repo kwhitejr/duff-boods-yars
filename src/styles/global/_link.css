@@ -1,0 +1,5 @@
+@value primary from "styles/utils/colors.css";
+
+a {
+  color: primary;
+}

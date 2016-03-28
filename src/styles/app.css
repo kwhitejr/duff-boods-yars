@@ -4,6 +4,7 @@
 
   /* Global styles */
   @import "styles/global/_base.css";
+  @import "styles/global/_link.css";
   @import "styles/global/_heading.css";
   @import "styles/global/_input.css";
   @import "styles/global/_button.css";
