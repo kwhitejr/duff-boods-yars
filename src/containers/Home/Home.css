@@ -1,9 +1,7 @@
 @value primary, lite from "styles/utils/colors.css";
 
 .base {
-  margin: 3rem auto;
-  width: 100%;
-  max-width: 550px;
+  composes: container from "styles/utils/layout.css";
 }
 
 .inputContainer {
