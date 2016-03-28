@@ -1,0 +1,11 @@
+@value primary, lite from "styles/utils/colors.css";
+
+.base {
+  composes: container from "styles/utils/layout.css";
+}
+
+.number {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  font-size: 2rem;
+}
