@@ -8,6 +8,7 @@
 
 body {
   height: 100vh;
-  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  background: linear-gradient(to bottom, gradientTop 0%, gradientBottom 100%);
   color: white;
 }

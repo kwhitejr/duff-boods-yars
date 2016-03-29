@@ -5,3 +5,7 @@
 @value dark: #433a5a;
 @value white: #f6f4f9;
 @value black: #000;
+
+/* Background Gradients */
+@value gradientTop: #282140;
+@value gradientBottom: #312c47;
