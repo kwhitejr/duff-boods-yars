@@ -2,6 +2,7 @@
 @value small as bp-small, large as bp-large from "styles/utils/breakpoints.css";
 
 :root {
+  background: gradientTop;
   font-size: 12px;
   @media bp-small {
     font-size: 14px;
