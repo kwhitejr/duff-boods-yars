@@ -1,4 +1,15 @@
 @value dark, white, gradientTop, gradientBottom from "styles/utils/colors.css";
+@value small as bp-small, large as bp-large from "styles/utils/breakpoints.css";
+
+:root {
+  font-size: 12px;
+  @media bp-small {
+    font-size: 14px;
+  }
+  @media bp-large {
+    font-size: 16px;
+  }
+}
 
 * {
   margin: 0;
