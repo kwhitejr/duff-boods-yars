@@ -1,3 +1,14 @@
-.heading {
-  color: #333;
+.base {
+  composes: container from "styles/utils/layout.css";
+}
+
+.nav {
+  ul {
+    list-style: none;
+    text-align: center;
+  }
+  li {
+    margin: 0.5rem;
+    display: inline-block;
+  }
 }
