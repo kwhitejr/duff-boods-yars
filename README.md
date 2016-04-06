@@ -7,10 +7,12 @@
 * React HMR
 * Redux
 * Redux DevTools
+* React Router
 * PostCSS
 * CSS Modules
 * Babel
 * ESLint
+* Stylelint
 * NPM Scripts
 
 
