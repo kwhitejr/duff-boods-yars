@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addItem } from 'actions/todo';
-import styles from './Home.css';
+import styles from './Todo.css';
 import Input from 'components/Input';
 import List from 'components/List';
 
-class Home extends Component {
+class Todo extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -61,4 +61,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Todo);
