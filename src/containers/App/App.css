@@ -2,6 +2,15 @@
   composes: container from "styles/utils/layout.css";
 }
 
+.header {
+  padding: 4rem 0 2rem;
+  text-align: center;
+  p {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+}
+
 .nav {
   ul {
     list-style: none;
