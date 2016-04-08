@@ -3,9 +3,12 @@
 :global {
   a {
     color: white;
+    &:hover,
+    &.active {
+      border-bottom: 1px solid primary;
+    }
     &.active {
       color: primary;
-      border-bottom: 1px solid primary;
     }
   }
 }
