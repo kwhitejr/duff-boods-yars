@@ -10,8 +10,8 @@ const App = ({ children }) => (
     </header>
     <nav className={styles.nav}>
       <ul>
-        <li><Link to="/todo">Todo</Link></li>
-        <li><Link to="/counter">Counter</Link></li>
+        <li><Link to="/todo" activeClassName="active">Todo</Link></li>
+        <li><Link to="/counter" activeClassName="active">Counter</Link></li>
       </ul>
     </nav>
     {children}
