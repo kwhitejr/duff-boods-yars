@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { addItem } from 'actions/todo';
 import styles from './Todo.css';
 import Input from 'components/Input';
@@ -49,7 +48,6 @@ class Todo extends Component {
           />
         </div>
         <List items={items} />
-        <Link to="/counter">Counter</Link>
       </div>
     );
   }

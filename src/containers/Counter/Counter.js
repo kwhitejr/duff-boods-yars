@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { increment, decrement, incrementIfOdd, incrementAsync } from 'actions/counter';
 import styles from './Counter.css';
 
@@ -38,7 +37,7 @@ class Counter extends Component {
     const { counter } = this.props;
     return (
       <div className={styles.base}>
-        <div className={styles.number}>
+        <div className={styles.number} onClick={this._increment}>
           {counter}
         </div>
         <div>
@@ -46,9 +45,6 @@ class Counter extends Component {
           <button onClick={this._decrement}> - </button>
           <button onClick={this._incrementIfOdd}> odd </button>
           <button onClick={this._incrementAsync}> async </button>
-        </div>
-        <div>
-          <Link to="/">Back</Link>
         </div>
       </div>
     );
