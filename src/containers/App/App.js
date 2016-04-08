@@ -14,7 +14,9 @@ const App = ({ children }) => (
         <li><Link to="/counter" activeClassName="active">Counter</Link></li>
       </ul>
     </nav>
-    {children}
+    <div className={styles.example}>
+      {children}
+    </div>
   </div>
 );
 
