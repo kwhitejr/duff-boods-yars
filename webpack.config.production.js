@@ -40,6 +40,7 @@ config.plugins.push(
   }),
   new HtmlWebpackPlugin({
     template: 'src/index.html',
+    favicon: 'src/assets/favicon.ico',
     minify: {
       removeComments: true,
       collapseWhitespace: true,
