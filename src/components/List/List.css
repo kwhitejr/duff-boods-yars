@@ -7,8 +7,7 @@
 
 .item {
   padding: 1rem;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  background: #fff;
+  border-bottom: 1px solid color(#433a5a alpha(25%));
+  background: #eef3f5;
   color: dark;
 }

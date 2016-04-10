@@ -23,4 +23,5 @@ body {
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   background: linear-gradient(to bottom, gradientTop 0%, gradientBottom 100%);
   color: white;
+  overflow-y: hidden;
 }
