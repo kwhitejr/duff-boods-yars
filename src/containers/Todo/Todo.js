@@ -36,6 +36,11 @@ class Todo extends Component {
   render() {
     const { todo: { items } } = this.props;
 
+    let count = items.length || null;
+    if (count) {
+      count = `${count} ${count > 1 ? 'items' : 'item'}`;
+    }
+
     return (
       <div className={styles.base}>
         <div className={styles.inputContainer}>
@@ -48,6 +53,7 @@ class Todo extends Component {
           />
         </div>
         <List items={items} />
+        <p>{count}</p>
       </div>
     );
   }
