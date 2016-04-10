@@ -1,4 +1,4 @@
-import { ADD_ITEM } from 'actions/todo';
+import { ADD_ITEM, REMOVE_ITEM } from 'actions/todo';
 
 const initialState = {
   items: [],
@@ -16,11 +16,10 @@ export default function reducer(state = initialState, action = {}) {
           },
         ],
       };
-    // case REMOVE_ITEM:
-    //   return {
-    //     ...state,
-    //     percent: action.percent
-    //   };
+    case REMOVE_ITEM:
+      return {
+        items: state.items.filter(item => item.id !== action.item.id),
+      };
     default:
       return state;
   }
