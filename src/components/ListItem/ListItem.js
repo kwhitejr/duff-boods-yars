@@ -11,12 +11,18 @@ class ListItem extends Component {
 
   constructor(props) {
     super();
+    this._onTextClick = this._onTextClick.bind(this);
     this._onChange = this._onChange.bind(this);
     this._onRemove = this._onRemove.bind(this);
     this._onBlur = this._onBlur.bind(this);
     this.state = {
+      editing: false,
       text: props.item.item || '',
     };
+  }
+
+  _onTextClick() {
+    this.setState({ editing: true });
   }
 
   _onChange(event) {
@@ -32,6 +38,8 @@ class ListItem extends Component {
     const { item, onEdit } = this.props;
     const { text } = this.state;
 
+    this.setState({ editing: false });
+
     if (item.item === text) {
       return;
     }
@@ -39,7 +47,8 @@ class ListItem extends Component {
   }
 
   render() {
-    const { onRemove, onEdit } = this.props;
+    const { onRemove } = this.props;
+    const { editing } = this.state;
 
     let removeButton;
     if (onRemove) {
@@ -47,7 +56,7 @@ class ListItem extends Component {
     }
 
     let text;
-    if (onEdit) {
+    if (editing) {
       text = (
         <Input
           className={styles.editable}
@@ -57,7 +66,11 @@ class ListItem extends Component {
         />
       );
     } else {
-      text = this.state.text;
+      text = (
+        <div className={styles.editable} onClick={this._onTextClick}>
+          { this.state.text }
+        </div>
+      );
     }
 
     return (
