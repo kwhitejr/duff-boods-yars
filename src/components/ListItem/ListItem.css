@@ -1,0 +1,8 @@
+@value dark from "styles/utils/colors.css";
+
+.item {
+  padding: 1rem;
+  border-bottom: 1px solid color(#433a5a alpha(25%));
+  background: #eef3f5;
+  color: dark;
+}

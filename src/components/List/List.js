@@ -1,25 +1,18 @@
 import React, { PropTypes } from 'react';
+import ListItem from 'components/ListItem';
 import styles from './List.css';
 
-const List = ({ items, onRemove }) => {
-  const ListItems = items.map((item) => {
-    let removeButton;
-    if (onRemove) {
-      removeButton = <button onClick={() => onRemove(item)}>X</button>;
-    }
-    return (
-      <li className={styles.item} key={item.id}>
-        {item.item} {removeButton}
-      </li>
-    );
-  });
-
-  return (
-    <ul className={styles.list}>
-      {ListItems}
-    </ul>
-  );
-};
+const List = ({ items, onRemove }) => (
+  <ul className={styles.list}>
+    {items.map(item =>
+      <ListItem
+        key={item.id}
+        item={item}
+        onRemove={onRemove}
+      />
+    )}
+  </ul>
+);
 
 List.defaultProps = {
 };
