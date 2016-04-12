@@ -10,6 +10,11 @@
   }
 }
 
+.editable {
+  display: inline-block;
+  outline: none;
+}
+
 .remove {
   opacity: 0;
   float: right;
