@@ -15,6 +15,7 @@ class ListItem extends Component {
     this._onChange = this._onChange.bind(this);
     this._onRemove = this._onRemove.bind(this);
     this._onBlur = this._onBlur.bind(this);
+    this._onFocus = this._onFocus.bind(this);
     this.state = {
       editing: false,
       text: props.item.item || '',
@@ -46,6 +47,10 @@ class ListItem extends Component {
     onEdit({ ...item, item: text });
   }
 
+  _onFocus(event) {
+    event.target.select();
+  }
+
   render() {
     const { onRemove } = this.props;
     const { editing } = this.state;
@@ -62,7 +67,9 @@ class ListItem extends Component {
           className={styles.editable}
           onBlur={this._onBlur}
           onChange={this._onChange}
+          onFocus={this._onFocus}
           value={this.state.text}
+          autoFocus
         />
       );
     } else {
