@@ -1,4 +1,4 @@
-@value dark from "styles/utils/colors.css";
+@value dark, secondary from "styles/utils/colors.css";
 
 .item {
   padding: 1rem;
@@ -15,4 +15,8 @@
   float: right;
   transition: opacity 0.2s;
   cursor: pointer;
+  &:hover {
+    color: secondary;
+    font-weight: 600;
+  }
 }
