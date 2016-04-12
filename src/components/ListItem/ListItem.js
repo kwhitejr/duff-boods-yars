@@ -13,6 +13,7 @@ class ListItem extends Component {
     super();
     this._onChange = this._onChange.bind(this);
     this._onRemove = this._onRemove.bind(this);
+    this._onBlur = this._onBlur.bind(this);
     this.state = {
       text: props.item.item || '',
     };
@@ -27,7 +28,12 @@ class ListItem extends Component {
     onRemove(item);
   }
 
+  _onBlur() {
+    const { item, onEdit } = this.props;
+    const { text } = this.state;
 
+    onEdit({ ...item, item: text });
+  }
 
   render() {
     const { item, onRemove, onEdit } = this.props;
@@ -42,6 +48,7 @@ class ListItem extends Component {
       text = (
         <Input
           className={styles.editable}
+          onBlur={this._onBlur}
           onChange={this._onChange}
           value={this.state.text}
         />
