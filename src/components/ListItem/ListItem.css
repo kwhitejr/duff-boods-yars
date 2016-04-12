@@ -10,9 +10,11 @@
   }
 }
 
-.editable {
+.itemText {
+  width: calc(100% - 25px);
   display: inline-block;
   outline: none;
+  letter-spacing: normal;
 }
 
 .remove {

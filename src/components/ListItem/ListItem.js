@@ -64,7 +64,7 @@ class ListItem extends Component {
     if (editing) {
       text = (
         <Input
-          className={styles.editable}
+          className={styles.itemText}
           onBlur={this._onBlur}
           onChange={this._onChange}
           onFocus={this._onFocus}
@@ -74,7 +74,7 @@ class ListItem extends Component {
       );
     } else {
       text = (
-        <div className={styles.editable} onClick={this._onTextClick}>
+        <div className={styles.itemText} onClick={this._onTextClick}>
           { this.state.text }
         </div>
       );
