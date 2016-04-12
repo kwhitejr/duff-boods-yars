@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addItem } from 'actions/todo';
+import { addItem, removeItem } from 'actions/todo';
 import styles from './Todo.css';
 import Input from 'components/Input';
 import List from 'components/List';
@@ -15,6 +15,7 @@ class Todo extends Component {
     super();
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
+    this._onRemoveItem = this._onRemoveItem.bind(this);
     this.state = {
       inputValue: '',
     };
@@ -31,6 +32,10 @@ class Todo extends Component {
       this.props.dispatch(addItem(item));
       this.setState({ inputValue: '' });
     }
+  }
+
+  _onRemoveItem(item) {
+    this.props.dispatch(removeItem(item));
   }
 
   render() {
@@ -52,7 +57,10 @@ class Todo extends Component {
             value={this.state.inputValue}
           />
         </div>
-        <List items={items} />
+        <List
+          items={items}
+          onRemove={this._onRemoveItem}
+        />
         <p>{count}</p>
       </div>
     );
