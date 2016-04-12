@@ -1,4 +1,4 @@
-@value dark, white, gradientTop, gradientBottom from "styles/utils/colors.css";
+@value primary, dark, white, gradientTop, gradientBottom from "styles/utils/colors.css";
 @value small as bp-small, large as bp-large from "styles/utils/breakpoints.css";
 
 :root {
@@ -10,6 +10,10 @@
   @media bp-large {
     font-size: 16px;
   }
+}
+
+::selection {
+  background: primary;
 }
 
 * {
@@ -24,4 +28,5 @@ body {
   background: linear-gradient(to bottom, gradientTop 0%, gradientBottom 100%);
   color: white;
   overflow-y: hidden;
+  letter-spacing: 0.1rem;
 }
