@@ -1,8 +1,0 @@
-@value primary, white from "styles/utils/colors.css";
-
-button {
-  border: 1px solid white;
-  padding: 5px;
-  background: primary;
-  color: white;
-}

@@ -5,4 +5,14 @@
   border-bottom: 1px solid color(#433a5a alpha(25%));
   background: #eef3f5;
   color: dark;
+  &:hover .remove {
+    opacity: 1;
+  }
+}
+
+.remove {
+  opacity: 0;
+  float: right;
+  transition: opacity 0.2s;
+  cursor: pointer;
 }
