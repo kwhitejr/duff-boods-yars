@@ -32,11 +32,14 @@ class ListItem extends Component {
     const { item, onEdit } = this.props;
     const { text } = this.state;
 
+    if (item.item === text) {
+      return;
+    }
     onEdit({ ...item, item: text });
   }
 
   render() {
-    const { item, onRemove, onEdit } = this.props;
+    const { onRemove, onEdit } = this.props;
 
     let removeButton;
     if (onRemove) {
