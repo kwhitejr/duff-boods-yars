@@ -70,12 +70,15 @@ class ListItem extends Component {
     let checkBox;
     if (onComplete) {
       checkBox = (
-        <Input
+        <div
           className={styles.checkbox}
-          checked={item.completed}
-          type="checkbox"
-          onChange={this._onCheck}
-        />
+          onClick={this._onCheck}
+        >
+          <Input
+            checked={item.completed}
+            type="checkbox"
+          />
+        </div>
       );
     }
 
@@ -111,7 +114,7 @@ class ListItem extends Component {
 
     return (
       <li className={classes}>
-        {checkBox} {text} {removeButton}
+        {checkBox}{text}{removeButton}
       </li>
     );
   }
