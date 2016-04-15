@@ -1,4 +1,9 @@
-import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from 'actions/todo';
+import {
+  ADD_ITEM,
+  REMOVE_ITEM,
+  EDIT_ITEM,
+  COMPLETE_ITEM,
+} from 'actions/todo';
 
 const initialState = {
   items: [],
@@ -25,6 +30,14 @@ export default function reducer(state = initialState, action = {}) {
         items: state.items.map(item => {
           return item.id === action.item.id
             ? { ...item, text: action.item.text }
+            : item;
+        }),
+      };
+    case COMPLETE_ITEM:
+      return {
+        items: state.items.map(item => {
+          return item.id === action.item.id
+            ? { ...item, completed: !item.completed }
             : item;
         }),
       };
