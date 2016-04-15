@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import ListItem from 'components/ListItem';
 import styles from './List.css';
 
-const List = ({ items, onRemove, onEdit }) => (
+const List = ({ items, onRemove, onEdit, onComplete }) => (
   <ul className={styles.list}>
     {items.map(item =>
       <ListItem
@@ -10,6 +10,7 @@ const List = ({ items, onRemove, onEdit }) => (
         item={item}
         onRemove={onRemove}
         onEdit={onEdit}
+        onComplete={onComplete}
       />
     )}
   </ul>
@@ -22,6 +23,7 @@ List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
   onRemove: PropTypes.func,
   onEdit: PropTypes.func,
+  onComplete: PropTypes.func,
 };
 
 export default List;

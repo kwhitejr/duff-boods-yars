@@ -7,12 +7,14 @@ class ListItem extends Component {
     item: PropTypes.object.isRequired,
     onRemove: PropTypes.func,
     onEdit: PropTypes.func,
+    onComplete: PropTypes.func,
   };
 
   constructor(props) {
     super();
     this._onTextClick = this._onTextClick.bind(this);
     this._onChange = this._onChange.bind(this);
+    this._onCheck = this._onCheck.bind(this);
     this._onRemove = this._onRemove.bind(this);
     this._onBlur = this._onBlur.bind(this);
     this._onFocus = this._onFocus.bind(this);
@@ -28,6 +30,12 @@ class ListItem extends Component {
 
   _onChange(event) {
     this.setState({ text: event.target.value });
+  }
+
+  _onCheck(event) {
+    const { item, onComplete } = this.props;
+
+    onComplete(item);
   }
 
   _onRemove() {
@@ -53,8 +61,20 @@ class ListItem extends Component {
   }
 
   render() {
-    const { onRemove } = this.props;
+    const { item, onRemove, onComplete } = this.props;
     const { editing } = this.state;
+
+    let checkBox;
+    if (onComplete) {
+      checkBox = (
+        <Input
+          className={styles.checkbox}
+          checked={item.completed}
+          type="checkbox"
+          onChange={this._onCheck}
+        />
+      );
+    }
 
     let removeButton;
     if (onRemove) {
@@ -83,7 +103,7 @@ class ListItem extends Component {
 
     return (
       <li className={styles.item}>
-        {text} {removeButton}
+        {checkBox} {text} {removeButton}
       </li>
     );
   }
