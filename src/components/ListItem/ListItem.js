@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames/bind';
 import Input from 'components/Input';
 import styles from './ListItem.css';
+
+const cx = classNames.bind(styles);
 
 class ListItem extends Component {
   static propTypes = {
@@ -101,8 +104,13 @@ class ListItem extends Component {
       );
     }
 
+    const classes = cx({
+      item: true,
+      completed: item.completed,
+    });
+
     return (
-      <li className={styles.item}>
+      <li className={classes}>
         {checkBox} {text} {removeButton}
       </li>
     );
