@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action = {}) {
           ...state.items,
           {
             id: state.items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1,
-            item: action.item,
+            text: action.item,
           },
         ],
       };
@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         items: state.items.map(item => {
           return item.id === action.item.id
-            ? { ...item, item: action.item.item }
+            ? { ...item, text: action.item.text }
             : item;
         }),
       };

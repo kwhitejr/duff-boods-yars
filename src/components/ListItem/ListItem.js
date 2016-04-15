@@ -18,7 +18,7 @@ class ListItem extends Component {
     this._onFocus = this._onFocus.bind(this);
     this.state = {
       editing: false,
-      text: props.item.item || '',
+      text: props.item.text || '',
     };
   }
 
@@ -41,10 +41,10 @@ class ListItem extends Component {
 
     this.setState({ editing: false });
 
-    if (item.item === text) {
+    if (item.text === text) {
       return;
     }
-    onEdit({ ...item, item: text });
+    onEdit({ ...item, text });
   }
 
   _onFocus(event) {
