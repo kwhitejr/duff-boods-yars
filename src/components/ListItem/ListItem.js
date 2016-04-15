@@ -37,11 +37,12 @@ class ListItem extends Component {
 
   _onBlur() {
     const { item, onEdit } = this.props;
-    const { text } = this.state;
+    const text = this.state.text.trim();
 
     this.setState({ editing: false });
 
-    if (item.text === text) {
+    if (!text || text === item.text) {
+      this.setState({ text: this.props.item.text });
       return;
     }
     onEdit({ ...item, text });
