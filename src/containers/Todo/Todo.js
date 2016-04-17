@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addItem, removeItem, editItem, completeItem } from 'actions/todo';
+import { addItem, removeItem, editItem, completeItem, clearCompleted } from 'actions/todo';
 import styles from './Todo.css';
 import Input from 'components/Input';
 import List from 'components/List';
@@ -18,6 +18,7 @@ class Todo extends Component {
     this._onRemoveItem = this._onRemoveItem.bind(this);
     this._onEditItem = this._onEditItem.bind(this);
     this._onCompleteItem = this._onCompleteItem.bind(this);
+    this._onClearCompleted = this._onClearCompleted.bind(this);
     this.state = {
       inputValue: '',
     };
@@ -46,6 +47,10 @@ class Todo extends Component {
 
   _onCompleteItem(item) {
     this.props.dispatch(completeItem(item));
+  }
+
+  _onClearCompleted() {
+    this.props.dispatch(clearCompleted());
   }
 
   render() {
@@ -77,7 +82,14 @@ class Todo extends Component {
           onEdit={this._onEditItem}
           onComplete={this._onCompleteItem}
         />
-        <p>{count}</p>
+        <footer>
+          <p>{count}</p>
+          {
+            completedCount
+              ? <button onClick={this._onClearCompleted}>Clear Completed</button>
+              : ''
+          }
+        </footer>
       </div>
     );
   }
