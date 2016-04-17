@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addItem, removeItem, editItem, completeItem, clearCompleted } from 'actions/todo';
 import styles from './Todo.css';
-import Input from 'components/Input';
 import List from 'components/List';
 
 class Todo extends Component {
@@ -68,7 +67,7 @@ class Todo extends Component {
     return (
       <div className={styles.base}>
         <div className={styles.inputContainer}>
-          <Input
+          <input
             className={styles.input}
             placeholder="Enter new item"
             onChange={this._onInputChange}

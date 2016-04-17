@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import Input from 'components/Input';
 import styles from './ListItem.css';
 
 const cx = classNames.bind(styles);
@@ -74,7 +73,7 @@ class ListItem extends Component {
           className={styles.checkbox}
           onClick={this._onCheck}
         >
-          <Input
+          <input
             defaultChecked={item.completed}
             type="checkbox"
           />
@@ -90,7 +89,7 @@ class ListItem extends Component {
     let text;
     if (editing) {
       text = (
-        <Input
+        <input
           className={styles.itemText}
           onBlur={this._onBlur}
           onChange={this._onChange}
