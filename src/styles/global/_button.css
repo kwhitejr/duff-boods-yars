@@ -1,3 +1,6 @@
+@value primary from "styles/utils/colors.css";
+
 button {
   outline: none;
+  cursor: pointer;
 }

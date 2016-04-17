@@ -82,7 +82,7 @@ class Todo extends Component {
           onEdit={this._onEditItem}
           onComplete={this._onCompleteItem}
         />
-        <footer>
+        <footer className={styles.footer}>
           <p>{count}</p>
           {
             completedCount

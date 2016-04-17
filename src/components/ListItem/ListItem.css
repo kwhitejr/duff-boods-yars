@@ -38,6 +38,7 @@
     opacity: 0;
     color: color(#433a5a alpha(75%));
     font-size: 1.3rem;
+    cursor: pointer;
   }
 }
 
