@@ -56,6 +56,10 @@ class Todo extends Component {
       count = `${count} ${count > 1 ? 'items' : 'item'}`;
     }
 
+    const completedCount = items.reduce((count, item) => {
+      return item.completed ? count + 1 : count
+    }, 0);
+
     return (
       <div className={styles.base}>
         <div className={styles.inputContainer}>
