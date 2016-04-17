@@ -75,7 +75,7 @@ class ListItem extends Component {
           onClick={this._onCheck}
         >
           <Input
-            checked={item.completed}
+            defaultChecked={item.completed}
             type="checkbox"
           />
         </div>
