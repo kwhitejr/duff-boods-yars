@@ -2,6 +2,7 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
 export const COMPLETE_ITEM = 'COMPLETE_ITEM';
+export const CLEAR_COMPLETE = 'CLEAR_COMPLETE';
 
 export function addItem(item) {
   return { type: ADD_ITEM, item };
@@ -17,4 +18,8 @@ export function editItem(item) {
 
 export function completeItem(item) {
   return { type: COMPLETE_ITEM, item };
+}
+
+export function clearComplete() {
+  return { type: CLEAR_COMPLETE };
 }

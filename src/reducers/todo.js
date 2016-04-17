@@ -3,6 +3,7 @@ import {
   REMOVE_ITEM,
   EDIT_ITEM,
   COMPLETE_ITEM,
+  CLEAR_COMPLETE,
 } from 'actions/todo';
 
 const initialState = {
@@ -40,6 +41,10 @@ export default function reducer(state = initialState, action = {}) {
             ? { ...item, completed: !item.completed }
             : item;
         }),
+      };
+    case CLEAR_COMPLETE:
+      return {
+        items: state.items.filter(item => item.completed !== true),
       };
     default:
       return state;
