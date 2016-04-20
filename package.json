@@ -7,7 +7,7 @@
     "lint:js": "eslint src *.js",
     "lint:css": "stylelint ./src/**/*.css",
     "clean": "rm -rf dist",
-    "dev": "webpack-dev-server --config webpack.config.development.js",
+    "dev": "webpack-dev-server --config webpack.config.development.js --host 0.0.0.0",
     "prod": "NODE_ENV=production webpack --config webpack.config.production.js"
   },
   "dependencies": {
