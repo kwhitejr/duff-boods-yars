@@ -14,38 +14,38 @@ class ListItem extends Component {
 
   constructor(props) {
     super();
-    this._onTextClick = this._onTextClick.bind(this);
-    this._onChange = this._onChange.bind(this);
-    this._onCheck = this._onCheck.bind(this);
-    this._onRemove = this._onRemove.bind(this);
-    this._onBlur = this._onBlur.bind(this);
-    this._onFocus = this._onFocus.bind(this);
+    this.onTextClick = this.onTextClick.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onCheck = this.onCheck.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onFocus = this.onFocus.bind(this);
     this.state = {
       editing: false,
       text: props.item.text || '',
     };
   }
 
-  _onTextClick() {
+  onTextClick() {
     this.setState({ editing: true });
   }
 
-  _onChange(event) {
+  onChange(event) {
     this.setState({ text: event.target.value });
   }
 
-  _onCheck(event) {
+  onCheck() {
     const { item, onComplete } = this.props;
 
     onComplete(item);
   }
 
-  _onRemove() {
+  onRemove() {
     const { item, onRemove } = this.props;
     onRemove(item);
   }
 
-  _onBlur() {
+  onBlur() {
     const { item, onEdit } = this.props;
     const text = this.state.text.trim();
 
@@ -58,7 +58,7 @@ class ListItem extends Component {
     onEdit({ ...item, text });
   }
 
-  _onFocus(event) {
+  onFocus(event) {
     event.target.select();
   }
 
@@ -71,7 +71,7 @@ class ListItem extends Component {
       checkBox = (
         <div
           className={styles.checkbox}
-          onClick={this._onCheck}
+          onClick={this.onCheck}
         >
           <input
             defaultChecked={item.completed}
@@ -83,7 +83,7 @@ class ListItem extends Component {
 
     let removeButton;
     if (onRemove) {
-      removeButton = <button className={styles.remove} onClick={this._onRemove}>X</button>;
+      removeButton = <button className={styles.remove} onClick={this.onRemove}>X</button>;
     }
 
     let text;
@@ -91,17 +91,17 @@ class ListItem extends Component {
       text = (
         <input
           className={styles.itemText}
-          onBlur={this._onBlur}
-          onChange={this._onChange}
-          onFocus={this._onFocus}
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          onFocus={this.onFocus}
           value={this.state.text}
           autoFocus
         />
       );
     } else {
       text = (
-        <div className={styles.itemText} onClick={this._onTextClick}>
-          { this.state.text }
+        <div className={styles.itemText} onClick={this.onTextClick}>
+          {this.state.text}
         </div>
       );
     }

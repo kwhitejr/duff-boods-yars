@@ -28,19 +28,21 @@ export default function reducer(state = initialState, action = {}) {
       };
     case EDIT_ITEM:
       return {
-        items: state.items.map(item => {
-          return item.id === action.item.id
+        items: state.items.map(item => (
+          item.id === action.item.id
             ? { ...item, text: action.item.text }
-            : item;
-        }),
+            : item
+          )
+        ),
       };
     case COMPLETE_ITEM:
       return {
-        items: state.items.map(item => {
-          return item.id === action.item.id
+        items: state.items.map(item => (
+          item.id === action.item.id
             ? { ...item, completed: !item.completed }
-            : item;
-        }),
+            : item
+          )
+        ),
       };
     case CLEAR_COMPLETED:
       return {

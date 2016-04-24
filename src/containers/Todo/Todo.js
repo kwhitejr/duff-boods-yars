@@ -12,22 +12,22 @@ class Todo extends Component {
 
   constructor() {
     super();
-    this._onInputChange = this._onInputChange.bind(this);
-    this._onInputEnter = this._onInputEnter.bind(this);
-    this._onRemoveItem = this._onRemoveItem.bind(this);
-    this._onEditItem = this._onEditItem.bind(this);
-    this._onCompleteItem = this._onCompleteItem.bind(this);
-    this._onClearCompleted = this._onClearCompleted.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onInputEnter = this.onInputEnter.bind(this);
+    this.onRemoveItem = this.onRemoveItem.bind(this);
+    this.onEditItem = this.onEditItem.bind(this);
+    this.onCompleteItem = this.onCompleteItem.bind(this);
+    this.onClearCompleted = this.onClearCompleted.bind(this);
     this.state = {
       inputValue: '',
     };
   }
 
-  _onInputChange(event) {
+  onInputChange(event) {
     this.setState({ inputValue: event.target.value });
   }
 
-  _onInputEnter(event) {
+  onInputEnter(event) {
     const item = event.target.value.trim();
 
     if (event.which === 13 && item) {
@@ -36,19 +36,19 @@ class Todo extends Component {
     }
   }
 
-  _onRemoveItem(item) {
+  onRemoveItem(item) {
     this.props.dispatch(removeItem(item));
   }
 
-  _onEditItem(item) {
+  onEditItem(item) {
     this.props.dispatch(editItem(item));
   }
 
-  _onCompleteItem(item) {
+  onCompleteItem(item) {
     this.props.dispatch(completeItem(item));
   }
 
-  _onClearCompleted() {
+  onClearCompleted() {
     this.props.dispatch(clearCompleted());
   }
 
@@ -60,9 +60,7 @@ class Todo extends Component {
       count = `${count} ${count > 1 ? 'items' : 'item'}`;
     }
 
-    const completedCount = items.reduce((count, item) => {
-      return item.completed ? count + 1 : count
-    }, 0);
+    const completedCount = items.reduce((total, item) => (item.completed ? total + 1 : total), 0);
 
     return (
       <div className={styles.base}>
@@ -70,22 +68,22 @@ class Todo extends Component {
           <input
             className={styles.input}
             placeholder="Enter new item"
-            onChange={this._onInputChange}
-            onKeyDown={this._onInputEnter}
+            onChange={this.onInputChange}
+            onKeyDown={this.onInputEnter}
             value={this.state.inputValue}
           />
         </div>
         <List
           items={items}
-          onRemove={this._onRemoveItem}
-          onEdit={this._onEditItem}
-          onComplete={this._onCompleteItem}
+          onRemove={this.onRemoveItem}
+          onEdit={this.onEditItem}
+          onComplete={this.onCompleteItem}
         />
         <footer className={styles.footer}>
           <p>{count}</p>
           {
             completedCount
-              ? <button onClick={this._onClearCompleted}>Clear Completed</button>
+              ? <button onClick={this.onClearCompleted}>Clear Completed</button>
               : ''
           }
         </footer>
