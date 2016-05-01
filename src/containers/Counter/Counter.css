@@ -10,8 +10,22 @@
   width: 5.5rem;
   height: 5.5rem;
   margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   font-size: 2rem;
   border-radius: 50%;
   background: primary;
+}
+
+.actions {
+  button {
+    margin: 0.5rem;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid primary;
+    border-radius: 2px;
+    color: primary;
+    font-weight: 300;
+    &:hover {
+      background: color(#fff alpha(10%));
+    }
+  }
 }

@@ -40,9 +40,9 @@ class Counter extends Component {
         <button className={styles.number} onClick={this.increment}>
           {counter}
         </button>
-        <div>
+        <div className={styles.actions}>
           <button onClick={this.increment}> + </button>
-          <button onClick={this.decrement}> - </button>
+          <button onClick={this.decrement}> – </button>
           <button onClick={this.incrementIfOdd}> odd </button>
           <button onClick={this.incrementAsync}> async </button>
         </div>
