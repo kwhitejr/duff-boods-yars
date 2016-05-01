@@ -2,10 +2,16 @@
 
 .base {
   composes: container from "styles/utils/layout.css";
+  text-align: center;
 }
 
 .number {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  display: inline-block;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   font-size: 2rem;
+  border-radius: 50%;
+  background: primary;
 }

@@ -37,9 +37,9 @@ class Counter extends Component {
     const { counter } = this.props;
     return (
       <div className={styles.base}>
-        <div className={styles.number} onClick={this.increment}>
+        <button className={styles.number} onClick={this.increment}>
           {counter}
-        </div>
+        </button>
         <div>
           <button onClick={this.increment}> + </button>
           <button onClick={this.decrement}> - </button>
