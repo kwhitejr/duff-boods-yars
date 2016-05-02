@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { increment, decrement, incrementIfOdd, incrementAsync } from 'actions/counter';
 import styles from './Counter.css';
 
@@ -12,25 +11,25 @@ class Counter extends Component {
 
   constructor() {
     super();
-    this._decrement = this._decrement.bind(this);
-    this._increment = this._increment.bind(this);
-    this._incrementIfOdd = this._incrementIfOdd.bind(this);
-    this._incrementAsync = this._incrementAsync.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.increment = this.increment.bind(this);
+    this.incrementIfOdd = this.incrementIfOdd.bind(this);
+    this.incrementAsync = this.incrementAsync.bind(this);
   }
 
-  _decrement() {
+  decrement() {
     this.props.dispatch(decrement());
   }
 
-  _increment() {
+  increment() {
     this.props.dispatch(increment());
   }
 
-  _incrementIfOdd() {
+  incrementIfOdd() {
     this.props.dispatch(incrementIfOdd());
   }
 
-  _incrementAsync() {
+  incrementAsync() {
     this.props.dispatch(incrementAsync(2000));
   }
 
@@ -38,17 +37,14 @@ class Counter extends Component {
     const { counter } = this.props;
     return (
       <div className={styles.base}>
-        <div className={styles.number}>
+        <div className={styles.number} onClick={this.increment}>
           {counter}
         </div>
         <div>
-          <button onClick={this._increment}> + </button>
-          <button onClick={this._decrement}> - </button>
-          <button onClick={this._incrementIfOdd}> odd </button>
-          <button onClick={this._incrementAsync}> async </button>
-        </div>
-        <div>
-          <Link to="/">Back</Link>
+          <button onClick={this.increment}> + </button>
+          <button onClick={this.decrement}> - </button>
+          <button onClick={this.incrementIfOdd}> odd </button>
+          <button onClick={this.incrementAsync}> async </button>
         </div>
       </div>
     );

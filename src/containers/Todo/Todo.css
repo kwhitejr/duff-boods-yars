@@ -6,7 +6,7 @@
 
 .inputContainer {
   position: relative;
-  background: #fff;
+  background: color(#fff alpha(20%));
   padding: 1rem;
 }
 
@@ -16,9 +16,17 @@
   font-size: 1.125rem;
   background: #eef3f5;
   outline: 0;
-  border: 1px solid color(#ddd alpha(-30%));
+  border: 1px solid transparent;
   border-radius: 2px;
   &:focus {
     border-color: primary;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  button:hover {
+    border-bottom: 1px solid primary;
   }
 }

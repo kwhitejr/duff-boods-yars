@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import styles from './App.css';
 
 const App = ({ children }) => (
@@ -9,11 +10,13 @@ const App = ({ children }) => (
     </header>
     <nav className={styles.nav}>
       <ul>
-        <li>Todo</li>
-        <li>Counter</li>
+        <li><Link to="/todo" activeClassName="active">Todo</Link></li>
+        <li><Link to="/counter" activeClassName="active">Counter</Link></li>
       </ul>
     </nav>
-    {children}
+    <div className={styles.example}>
+      {children}
+    </div>
   </div>
 );
 

@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './NotFound.css';
 
 const NotFound = () => (
-  <div>
-    <h2>Page Not Found!!!</h2>
+  <div className={styles.base}>
+    <h2 className={styles.heading}>Page Not Found!</h2>
   </div>
 );
 

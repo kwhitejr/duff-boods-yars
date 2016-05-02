@@ -1,5 +1,14 @@
-@value primary from "styles/utils/colors.css";
+@value primary, white from "styles/utils/colors.css";
 
-a {
-  color: primary;
+:global {
+  a {
+    color: white;
+    &:hover,
+    &.active {
+      border-bottom: 1px solid primary;
+    }
+    &.active {
+      color: primary;
+    }
+  }
 }

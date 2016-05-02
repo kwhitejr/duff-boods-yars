@@ -17,7 +17,7 @@ config.module.loaders.push({
   test: /\.css$/,
   loader: ExtractTextPlugin.extract(
     'style-loader',
-    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' // eslint-disable-line
+    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
   ),
 });
 
@@ -40,6 +40,7 @@ config.plugins.push(
   }),
   new HtmlWebpackPlugin({
     template: 'src/index.html',
+    favicon: 'src/assets/favicon.ico',
     minify: {
       removeComments: true,
       collapseWhitespace: true,

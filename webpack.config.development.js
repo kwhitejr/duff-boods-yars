@@ -46,6 +46,7 @@ config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
     template: 'src/index.html',
+    favicon: 'src/assets/favicon.ico',
     inject: true,
   }),
   new webpack.NoErrorsPlugin(),
