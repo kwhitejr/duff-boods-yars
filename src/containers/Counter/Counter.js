@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { increment, decrement, incrementIfOdd, incrementAsync } from 'actions/counter';
 import styles from './Counter.css';
+
+const cx = classNames.bind(styles);
 
 class Counter extends Component {
   static propTypes = {
@@ -15,6 +18,10 @@ class Counter extends Component {
     this.increment = this.increment.bind(this);
     this.incrementIfOdd = this.incrementIfOdd.bind(this);
     this.incrementAsync = this.incrementAsync.bind(this);
+    this.animationDone = this.animationDone.bind(this);
+    this.state = {
+      animating: false
+    };
   }
 
   decrement() {
@@ -22,6 +29,7 @@ class Counter extends Component {
   }
 
   increment() {
+    this.setState({animating: true});
     this.props.dispatch(increment());
   }
 
@@ -33,12 +41,26 @@ class Counter extends Component {
     this.props.dispatch(incrementAsync(2000));
   }
 
+  animationDone() {
+    this.setState({animating: false});
+  }
+
   render() {
     const { counter } = this.props;
+
+    const classes = cx({
+      base: true,
+      animate: this.state.animating,
+    });
+
     return (
-      <div className={styles.base}>
-        <button className={styles.number} onClick={this.increment}>
-          {counter}
+      <div className={classes}>
+        <button
+          className={styles.number}
+          onClick={this.increment}
+          onMouseUp={this.animationDone}
+        >
+          <span>{counter}</span>
         </button>
         <div className={styles.actions}>
           <button onClick={this.increment}> + </button>
