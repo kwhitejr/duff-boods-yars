@@ -63,7 +63,7 @@ class Counter extends Component {
           <span>{counter}</span>
         </button>
         <div className={styles.actions}>
-          <button onClick={this.increment}> + </button>
+          <button onClick={this.increment} onMouseUp={this.animationDone}> + </button>
           <button onClick={this.decrement}> – </button>
           <button onClick={this.incrementIfOdd}> odd </button>
           <button onClick={this.incrementAsync}> async </button>
