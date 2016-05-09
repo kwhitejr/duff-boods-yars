@@ -16,6 +16,7 @@ class ListItem extends Component {
     super();
     this.onTextClick = this.onTextClick.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onEnter = this.onEnter.bind(this);
     this.onCheck = this.onCheck.bind(this);
     this.onRemove = this.onRemove.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -24,6 +25,19 @@ class ListItem extends Component {
       editing: false,
       text: props.item.text || '',
     };
+  }
+
+  handleSave() {
+    const { item, onEdit } = this.props;
+    const text = this.state.text.trim();
+
+    this.setState({ editing: false });
+
+    if (!text || text === item.text) {
+      this.setState({ text: this.props.item.text });
+      return;
+    }
+    onEdit({ ...item, text });
   }
 
   onTextClick() {
@@ -45,17 +59,16 @@ class ListItem extends Component {
     onRemove(item);
   }
 
-  onBlur() {
-    const { item, onEdit } = this.props;
-    const text = this.state.text.trim();
+  onEnter(event) {
+    const { item } = this.props;
 
-    this.setState({ editing: false });
-
-    if (!text || text === item.text) {
-      this.setState({ text: this.props.item.text });
-      return;
+    if (event.which === 13 && item) {
+      this.handleSave();
     }
-    onEdit({ ...item, text });
+  }
+
+  onBlur() {
+    this.handleSave();
   }
 
   onFocus(event) {
@@ -93,6 +106,7 @@ class ListItem extends Component {
           className={styles.itemText}
           onBlur={this.onBlur}
           onChange={this.onChange}
+          onKeyDown={this.onEnter}
           onFocus={this.onFocus}
           value={this.state.text}
           autoFocus
