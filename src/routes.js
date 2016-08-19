@@ -1,15 +1,37 @@
 import React from 'react';
 import { Route, IndexRedirect } from 'react-router';
 import App from 'containers/App';
-import Todo from 'containers/Todo';
-import Counter from 'containers/Counter';
-import NotFound from 'containers/NotFound';
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRedirect to="/todo" />
-    <Route path="todo" component={Todo} />
-    <Route path="counter" component={Counter} />
-    <Route path="*" component={NotFound} />
-  </Route>
-);
+function errorLoading(err) {
+  console.log('Page failed to load. ', err);
+}
+
+function loadRoute(cb) {
+  return ({default: module}) => cb(null, module);
+}
+
+export default {
+  path: '/',
+  component: App,
+  indexRoute: { onEnter: (nextState, replace) => replace('/todo') },
+  childRoutes: [
+    {
+      path: 'todo',
+      getComponent(location, cb) {
+        System.import('containers/Todo').then(loadRoute(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: 'counter',
+      getComponent(location, cb) {
+        System.import('containers/Counter').then(loadRoute(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '*',
+      getComponent(location, cb) {
+        System.import('containers/NotFound').then(loadRoute(cb)).catch(errorLoading);
+      }
+    }
+  ]
+}
