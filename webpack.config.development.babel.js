@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const baseConfig = require('./webpack.config.base');
 
 const config = merge(baseConfig, {
@@ -60,6 +61,7 @@ const config = merge(baseConfig, {
         NODE_ENV: JSON.stringify('development'),
       },
     }),
+    new DashboardPlugin(),
   ]
 });
 
