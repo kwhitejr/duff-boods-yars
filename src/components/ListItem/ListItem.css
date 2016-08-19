@@ -5,6 +5,7 @@
   border-bottom: 1px solid color(#433a5a alpha(25%));
   background: #eef3f5;
   color: dark;
+
   &:hover .remove {
     opacity: 1;
   }
@@ -20,6 +21,7 @@
 .checkbox {
   position: relative;
   display: inline-block;
+
   input {
     margin-right: 1rem;
     outline: 0;
@@ -30,6 +32,7 @@
     vertical-align: middle;
     appearance: none;
   }
+
   &::after {
     content: '\2713';
     position: absolute;
@@ -47,6 +50,7 @@
   float: right;
   transition: opacity 0.2s;
   cursor: pointer;
+
   &:hover {
     color: secondary;
     font-weight: 600;
@@ -58,10 +62,12 @@
     text-decoration: line-through;
     opacity: 0.5;
   }
+
   .checkbox {
     input {
       border-color: color(#433a5a alpha(40%));
     }
+
     &::after {
       opacity: 1;
     }
