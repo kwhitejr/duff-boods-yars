@@ -27,19 +27,6 @@ class ListItem extends Component {
     };
   }
 
-  handleSave() {
-    const { item, onEdit } = this.props;
-    const text = this.state.text.trim();
-
-    this.setState({ editing: false });
-
-    if (!text || text === item.text) {
-      this.setState({ text: this.props.item.text });
-      return;
-    }
-    onEdit({ ...item, text });
-  }
-
   onTextClick() {
     this.setState({ editing: true });
   }
@@ -73,6 +60,19 @@ class ListItem extends Component {
 
   onFocus(event) {
     event.target.select();
+  }
+
+  handleSave() {
+    const { item, onEdit } = this.props;
+    const text = this.state.text.trim();
+
+    this.setState({ editing: false });
+
+    if (!text || text === item.text) {
+      this.setState({ text: this.props.item.text });
+      return;
+    }
+    onEdit({ ...item, text });
   }
 
   render() {

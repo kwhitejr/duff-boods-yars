@@ -2,11 +2,14 @@
 
 :global {
   a {
+    text-decoration: none;
     color: white;
+
     &:hover,
     &.active {
       border-bottom: 1px solid primary;
     }
+
     &.active {
       color: primary;
     }

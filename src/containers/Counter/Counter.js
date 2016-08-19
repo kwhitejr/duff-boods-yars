@@ -20,7 +20,7 @@ class Counter extends Component {
     this.incrementAsync = this.incrementAsync.bind(this);
     this.animationDone = this.animationDone.bind(this);
     this.state = {
-      animating: false
+      animating: false,
     };
   }
 
@@ -29,7 +29,7 @@ class Counter extends Component {
   }
 
   increment() {
-    this.setState({animating: true});
+    this.setState({ animating: true });
     this.props.dispatch(increment());
   }
 
@@ -42,7 +42,7 @@ class Counter extends Component {
   }
 
   animationDone() {
-    this.setState({animating: false});
+    this.setState({ animating: false });
   }
 
   render() {

@@ -18,6 +18,7 @@
   outline: 0;
   border: 1px solid transparent;
   border-radius: 2px;
+
   &:focus {
     border-color: primary;
   }
@@ -26,6 +27,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
+
   button:hover {
     border-bottom: 1px solid primary;
   }
