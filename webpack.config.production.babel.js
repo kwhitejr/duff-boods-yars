@@ -1,24 +1,20 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
-const config = {
-  ...baseConfig,
-
+const config = merge(baseConfig, {
   devtool: 'source-map',
 
   entry: './src/index',
 
   output: {
-    ...baseConfig.output,
     publicPath: '/',
   },
 
   module: {
-    ...baseConfig.module,
     loaders: [
-      ...baseConfig.module.loaders,
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -39,7 +35,6 @@ const config = {
   },
 
   plugins: [
-    ...baseConfig.plugins,
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -77,6 +72,6 @@ const config = {
     }),
     new ExtractTextPlugin({ filename: 'styles.css', allChunks: true })
   ]
-};
+});
 
 module.exports = config;

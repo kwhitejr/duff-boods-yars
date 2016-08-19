@@ -1,10 +1,9 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
-const config = {
-  ...baseConfig,
-
+const config = merge(baseConfig, {
   debug: true,
 
   devtool: 'eval',
@@ -12,7 +11,6 @@ const config = {
   entry: './src/index',
 
   output: {
-    ...baseConfig.output,
     publicPath: '/',
   },
 
@@ -25,9 +23,7 @@ const config = {
   },
 
   module: {
-    ...baseConfig.module,
     loaders: [
-      ...baseConfig.module.loaders,
       {
         test: /\.css$/,
         loaders: [
@@ -51,7 +47,6 @@ const config = {
   },
 
   plugins: [
-    ...baseConfig.plugins,
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
@@ -66,6 +61,6 @@ const config = {
       },
     }),
   ]
-};
+});
 
 module.exports = config;
