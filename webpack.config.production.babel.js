@@ -21,10 +21,10 @@ const config = {
       ...baseConfig.module.loaders,
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-        ),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+        }),
       },
     ],
   },
@@ -75,7 +75,7 @@ const config = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new ExtractTextPlugin('styles.css', { allChunks: true })
+    new ExtractTextPlugin({ filename: 'styles.css', allChunks: true })
   ]
 };
 
