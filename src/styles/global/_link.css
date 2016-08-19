@@ -2,6 +2,7 @@
 
 :global {
   a {
+    text-decoration: none;
     color: white;
 
     &:hover,

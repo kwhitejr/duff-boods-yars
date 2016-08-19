@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addItem, removeItem, editItem, completeItem, clearCompleted } from 'actions/todo';
-import styles from './Todo.css';
 import List from 'components/List';
+import styles from './Todo.css';
 
 class Todo extends Component {
   static propTypes = {
