@@ -1,6 +1,3 @@
-/* eslint strict: 0 */
-'use strict';
-
 const path = require('path');
 
 module.exports = {
@@ -26,8 +23,10 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
-    root: path.resolve('src'),
-    modulesDirectories: ['node_modules'],
+    modules: [
+      path.resolve(__dirname, 'src'),
+      'node_modules'
+    ],
     extensions: ['', '.js', '.json'],
   },
   plugins: [],
