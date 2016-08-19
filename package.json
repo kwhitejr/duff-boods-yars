@@ -7,8 +7,8 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint ./src/**/*.css",
     "clean": "rm -rf dist",
-    "dev": "webpack-dev-server --config webpack.config.development.js --host 0.0.0.0",
-    "prod": "NODE_ENV=production webpack --config webpack.config.production.js"
+    "dev": "webpack-dev-server --config webpack.config.development.babel.js --host 0.0.0.0",
+    "prod": "NODE_ENV=production webpack --config webpack.config.production.babel.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
