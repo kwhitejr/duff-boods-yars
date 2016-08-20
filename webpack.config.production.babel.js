@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const baseConfig = require('./webpack.config.base');
 
 const config = merge(baseConfig, {
@@ -64,6 +65,7 @@ const config = merge(baseConfig, {
       },
       inject: true,
     }),
+    new OfflinePlugin(),
     new webpack.DefinePlugin({
       __DEV__: false,
       'process.env': {
