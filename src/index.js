@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { install as offlineInstall } from 'offline-plugin/runtime';
 
 import routes from 'routes';
 import configureStore from 'store';
@@ -17,3 +18,7 @@ render(
   </Provider>,
   document.getElementById('app')
 );
+
+if (process.env.NODE_ENV === 'production') {
+  offlineInstall();
+}
