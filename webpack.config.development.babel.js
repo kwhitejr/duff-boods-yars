@@ -62,7 +62,7 @@ const config = merge(baseConfig, {
       },
     }),
     new DashboardPlugin(),
-  ]
+  ],
 });
 
 module.exports = config;

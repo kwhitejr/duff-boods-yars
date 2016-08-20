@@ -1,13 +1,11 @@
-import React from 'react';
-import { Route, IndexRedirect } from 'react-router';
 import App from 'containers/App';
 
 function errorLoading(err) {
-  console.log('Page failed to load. ', err);
+  console.log('Page failed to load. ', err); // eslint-disable-line
 }
 
 function loadRoute(cb) {
-  return ({default: module}) => cb(null, module);
+  return ({ default: module }) => cb(null, module);
 }
 
 export default {
@@ -18,20 +16,26 @@ export default {
     {
       path: 'todo',
       getComponent(location, cb) {
-        System.import('containers/Todo').then(loadRoute(cb)).catch(errorLoading);
-      }
+        System.import('containers/Todo')
+          .then(loadRoute(cb))
+          .catch(errorLoading);
+      },
     },
     {
       path: 'counter',
       getComponent(location, cb) {
-        System.import('containers/Counter').then(loadRoute(cb)).catch(errorLoading);
-      }
+        System.import('containers/Counter')
+          .then(loadRoute(cb))
+          .catch(errorLoading);
+      },
     },
     {
       path: '*',
       getComponent(location, cb) {
-        System.import('containers/NotFound').then(loadRoute(cb)).catch(errorLoading);
-      }
-    }
-  ]
-}
+        System.import('containers/NotFound')
+          .then(loadRoute(cb))
+          .catch(errorLoading);
+      },
+    },
+  ],
+};

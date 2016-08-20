@@ -72,8 +72,8 @@ const config = merge(baseConfig, {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new ExtractTextPlugin({ filename: 'styles.css', allChunks: true })
-  ]
+    new ExtractTextPlugin({ filename: 'styles.css', allChunks: true }),
+  ],
 });
 
 module.exports = config;
