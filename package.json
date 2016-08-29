@@ -11,6 +11,11 @@
     "dev:dashboard": "webpack-dashboard -- webpack-dev-server --config webpack.config.development.babel.js",
     "prod": "NODE_ENV=production webpack --config webpack.config.production.babel.js"
   },
+  "engine-strict": true,
+  "engines": {
+    "node": ">= 6.x",
+    "npm": ">= 3.x"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "lodash": "^4.15.0",
