@@ -4,6 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const baseConfig = require('./webpack.config.base');
 
+// PostCSS
+const stylelint = require('stylelint');
+const postcssImport = require('postcss-import');
+const postcssNested = require('postcss-nested');
+const cssnext = require('postcss-cssnext');
+const postcssReporter = require('postcss-reporter');
+
 const config = merge(baseConfig, {
   debug: true,
 
@@ -36,14 +43,16 @@ const config = merge(baseConfig, {
     ],
   },
 
-  postcss: function() {
+  postcss: function(webpack) {
     return [
-      require('stylelint'),
-      require('postcss-modules-values'),
-      require('postcss-import'),
-      require('postcss-nested'),
-      require('postcss-cssnext')({ browsers: ['last 2 versions', 'IE > 10'] }),
-      require('postcss-reporter')({ clearMessages: true }),
+      stylelint,
+      postcssImport({
+        addDependencyTo: webpack,
+        path: ['./src'],
+      }),
+      postcssNested,
+      cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
+      postcssReporter({ clearMessages: true }),
     ];
   },
 

@@ -1,4 +1,4 @@
-@value primary, lite from "styles/utils/colors.css";
+@import "styles/utils/colors.css";
 
 .base {
   composes: container from "styles/utils/layout.css";
@@ -20,7 +20,7 @@
   border-radius: 2px;
 
   &:focus {
-    border-color: primary;
+    border-color: var(--primary);
   }
 }
 
@@ -29,6 +29,6 @@
   justify-content: space-between;
 
   button:hover {
-    border-bottom: 1px solid primary;
+    border-bottom: 1px solid var(--primary);
   }
 }
