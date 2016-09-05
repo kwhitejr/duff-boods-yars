@@ -1,4 +1,4 @@
-@value primary, lite from "styles/utils/colors.css";
+@import "styles/utils/colors.css";
 
 .base {
   composes: container from "styles/utils/layout.css";
@@ -14,7 +14,7 @@
   margin-bottom: 3.5rem;
   font-size: 2rem;
   border-radius: 50%;
-  background: primary;
+  background: var(--primary);
 
   .animate & {
     animation: pulse 0.5s ease-out forwards;
@@ -39,14 +39,14 @@
 
   &::before {
     .animate & {
-      background: color(#75d2d3 alpha(30%));
+      background: color(var(--primary) alpha(30%));
       animation: ripple 0.8s cubic-bezier(0.2, 0.7, 0.4, 1) 0.2s forwards;
     }
   }
 
   &::after {
     .animate & {
-      background: color(#75d2d3 alpha(70%));
+      background: color(var(--primary) alpha(70%));
       animation: ripple 0.8s cubic-bezier(0.2, 0.7, 0.4, 1) 0.5s forwards;
     }
   }
@@ -56,13 +56,13 @@
   button {
     margin: 0.5rem;
     padding: 0.25rem 0.8rem;
-    border: 1px solid primary;
+    border: 1px solid var(--primary);
     border-radius: 2px;
-    color: primary;
+    color: var(--primary);
     font-weight: 300;
 
     &:hover {
-      background: color(#fff alpha(10%));
+      background: color(var(--white) alpha(10%));
     }
   }
 }

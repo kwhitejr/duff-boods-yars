@@ -5,6 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const baseConfig = require('./webpack.config.base');
 
+// PostCSS
+const postcssImport = require('postcss-import');
+const postcssNested = require('postcss-nested');
+const cssnext = require('postcss-cssnext');
+
 const config = merge(baseConfig, {
   devtool: 'source-map',
 
@@ -26,12 +31,14 @@ const config = merge(baseConfig, {
     ],
   },
 
-  postcss: function() {
+  postcss: function(webpack) {
     return [
-      require('postcss-modules-values'),
-      require('postcss-import'),
-      require('postcss-nested'),
-      require('postcss-cssnext')({ browsers: ['last 2 versions', 'IE > 10'] }),
+      postcssImport({
+        addDependencyTo: webpack,
+        path: ['./src'],
+      }),
+      postcssNested,
+      cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
     ];
   },
 
