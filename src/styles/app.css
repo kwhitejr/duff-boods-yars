@@ -7,7 +7,7 @@
 @import "styles/utils/fonts.css";
 
 :root {
-  background: gradientTop;
+  background: var(--gradientBottom);
   font-size: 12px;
   @media (--bp-small) {
     font-size: 14px;
