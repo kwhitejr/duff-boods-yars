@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -27,7 +27,7 @@ module.exports = {
       path.resolve(__dirname, 'src'),
       'node_modules',
     ],
-    extensions: ['', '.js', '.json'],
+    extensions: ['.js', '.json'],
   },
   plugins: [],
   externals: {},

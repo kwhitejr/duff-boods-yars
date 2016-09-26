@@ -12,8 +12,6 @@ const cssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 
 const config = merge(baseConfig, {
-  debug: true,
-
   devtool: 'eval',
 
   entry: './src/index',
@@ -31,7 +29,7 @@ const config = merge(baseConfig, {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
         loaders: [
@@ -43,20 +41,23 @@ const config = merge(baseConfig, {
     ],
   },
 
-  postcss: function(webpack) {
-    return [
-      stylelint,
-      postcssImport({
-        addDependencyTo: webpack,
-        path: ['./src'],
-      }),
-      postcssNested,
-      cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
-      postcssReporter({ clearMessages: true }),
-    ];
-  },
-
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: (webpackInstance) => [
+          stylelint,
+          postcssImport({
+            addDependencyTo: webpackInstance,
+            path: ['./src'],
+          }),
+          postcssNested,
+          cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
+          postcssReporter({ clearMessages: true }),
+        ],
+        context: __dirname,
+      },
+      debug: true,
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',

@@ -20,7 +20,7 @@ const config = merge(baseConfig, {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -31,18 +31,20 @@ const config = merge(baseConfig, {
     ],
   },
 
-  postcss: function(webpack) {
-    return [
-      postcssImport({
-        addDependencyTo: webpack,
-        path: ['./src'],
-      }),
-      postcssNested,
-      cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
-    ];
-  },
-
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: (webpackInstance) => [
+          postcssImport({
+            addDependencyTo: webpackInstance,
+            path: ['./src'],
+          }),
+          postcssNested,
+          cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
+        ],
+        context: __dirname,
+      },
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
