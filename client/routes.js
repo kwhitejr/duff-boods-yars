@@ -22,9 +22,9 @@ export default {
       },
     },
     {
-      path: 'counter',
+      path: 'about',
       getComponent(location, cb) {
-        System.import('containers/Counter')
+        System.import('containers/About')
           .then(loadRoute(cb))
           .catch(errorLoading);
       },

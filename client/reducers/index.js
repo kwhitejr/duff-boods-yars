@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import counter from 'reducers/counter';
+import authReducer from 'reducers/auth_reducer';
 import todo from 'reducers/todo';
 
 const rootReducer = combineReducers({
-  counter,
+  auth: authReducer,
   todo,
   routing,
 });
