@@ -32,10 +32,10 @@ class Login extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         {this.renderAlert()}
           <div>
-            <Field name="email" label="Email" className="form-control" component="input" type="text" />
+            <Field name="email" label="Email" className="form-control" component={renderField} type="text" />
           </div>
           <div>
-            <Field name="password" label="Password" className="form-control" component="input" type="password" />
+            <Field name="password" label="Password" className="form-control" component={renderField} type="password" />
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>

@@ -30,6 +30,14 @@ export default {
       },
     },
     {
+      path: 'login',
+      getComponent(location, cb) {
+        System.import('containers/Login')
+          .then(loadRoute(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
       path: '*',
       getComponent(location, cb) {
         System.import('containers/NotFound')

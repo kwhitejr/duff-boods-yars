@@ -50,6 +50,7 @@ h1 {
 
 input {
   color: var(--dark);
+  background: var(--primary);
 }
 
 a {
