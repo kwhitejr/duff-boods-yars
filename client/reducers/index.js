@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 import authReducer from 'reducers/auth_reducer';
-import todo from 'reducers/todo';
+import selectorReducer from 'reducers/selector_reducer';
+import workoutReducer from 'reducers/workout_reducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  todo,
+  selector: selectorReducer,
+  workout: workoutReducer,
+  form: formReducer,
   routing,
 });
 
