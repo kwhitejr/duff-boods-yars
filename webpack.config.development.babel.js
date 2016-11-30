@@ -14,7 +14,7 @@ const postcssReporter = require('postcss-reporter');
 const config = merge(baseConfig, {
   devtool: 'eval',
 
-  entry: './src/index',
+  entry: './client/index',
 
   output: {
     publicPath: '/',
@@ -48,7 +48,7 @@ const config = merge(baseConfig, {
           stylelint,
           postcssImport({
             addDependencyTo: webpackInstance,
-            path: ['./src'],
+            path: ['./client'],
           }),
           postcssNested,
           cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
@@ -60,8 +60,8 @@ const config = merge(baseConfig, {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      favicon: 'src/assets/favicon.ico',
+      template: 'client/index.html',
+      favicon: 'client/assets/favicon.ico',
       inject: true,
     }),
     new webpack.NoErrorsPlugin(),

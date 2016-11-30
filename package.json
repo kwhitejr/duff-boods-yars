@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint .",
-    "lint:css": "stylelint ./src/**/*.css",
+    "lint:css": "stylelint ./client/**/*.css",
     "clean": "rm -rf dist",
     "dev": "webpack-dev-server --config webpack.config.development.babel.js --host 0.0.0.0",
     "dev:dashboard": "webpack-dashboard -- webpack-dev-server --config webpack.config.development.babel.js",

@@ -13,7 +13,7 @@ const cssnext = require('postcss-cssnext');
 const config = merge(baseConfig, {
   devtool: 'source-map',
 
-  entry: './src/index',
+  entry: './client/index',
 
   output: {
     publicPath: '/',
@@ -37,7 +37,7 @@ const config = merge(baseConfig, {
         postcss: (webpackInstance) => [
           postcssImport({
             addDependencyTo: webpackInstance,
-            path: ['./src'],
+            path: ['./client'],
           }),
           postcssNested,
           cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
@@ -58,8 +58,8 @@ const config = merge(baseConfig, {
       sourceMap: false,
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      favicon: 'src/assets/favicon.ico',
+      template: 'client/index.html',
+      favicon: 'client/assets/favicon.ico',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
