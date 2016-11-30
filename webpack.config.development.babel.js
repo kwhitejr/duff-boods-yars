@@ -23,7 +23,7 @@ const config = merge(baseConfig, {
   devServer: {
     hot: true,
     inline: true,
-    progress: true,
+    // progress: true, // not sure what this did, causes errors now
     contentBase: './dist',
     stats: { colors: true },
   },
