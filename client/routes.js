@@ -11,12 +11,12 @@ function loadRoute(cb) {
 export default {
   path: '/',
   component: App,
-  indexRoute: { onEnter: (nextState, replace) => replace('/todo') },
+  indexRoute: { onEnter: (nextState, replace) => replace('/home') },
   childRoutes: [
     {
-      path: 'todo',
+      path: 'home',
       getComponent(location, cb) {
-        System.import('containers/Todo')
+        System.import('containers/Home')
           .then(loadRoute(cb))
           .catch(errorLoading);
       },
