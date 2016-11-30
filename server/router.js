@@ -9,7 +9,7 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
 
 module.exports = function (app) {
-  console.log("router is operational");
+  // console.log("router is operational");
   // Initialize route groups
   const apiRoutes = express.Router(),
         authRoutes = express.Router();

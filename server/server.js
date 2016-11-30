@@ -7,12 +7,13 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import config from './config/main';
+import APIrouter from './router';
 
 const isProduction = config.env === 'production';
 const app = express();
 
-app.listen(config.server.port, () =>
-  console.info(`Server running in ${app.get('env')} on port ${config.server.port}`) // eslint-disable-line no-console
+app.listen(config.port, () =>
+  console.info(`Server running in ${app.get('env')} on port ${config.port}`) // eslint-disable-line no-console
 );
 
 app.use(compression());
