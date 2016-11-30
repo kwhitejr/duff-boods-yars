@@ -39,6 +39,7 @@ body {
 button {
   outline: none;
   cursor: pointer;
+  background: var(--secondary);
 }
 
 h1 {
