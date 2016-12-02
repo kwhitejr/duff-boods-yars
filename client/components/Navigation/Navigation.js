@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { logoutUser } from 'actions/auth_actions';
 
 class Navigation extends Component {
   renderLinks() {
@@ -13,7 +14,7 @@ class Navigation extends Component {
           <Link to="dashboard">Dashboard</Link>
         </li>,
         <li key={`${3}header`}>
-          <Link to="logout">Logout</Link>
+          <Link to="/" onClick={this.props.logoutUser}>Logout</Link>
         </li>,
       ];
     } else {
@@ -64,4 +65,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Navigation);
+function mapDispatchToProps(dispatch) {
+  return {
+    logoutUser: () => dispatch(logoutUser()),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Navigation);

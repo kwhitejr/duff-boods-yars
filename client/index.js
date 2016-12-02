@@ -8,7 +8,7 @@ import { install as offlineInstall } from 'offline-plugin/runtime'; // eslint-di
 
 import routes from 'routes';
 import configureStore from 'store';
-import { AUTH_USER } from 'actions/types';
+import { AUTH_USER } from 'actions/auth_actions';
 import 'styles/app.css';
 
 const store = configureStore();

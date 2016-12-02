@@ -2,12 +2,12 @@ import axios from 'axios';
 import { push } from 'react-router-redux';
 import cookie from 'react-cookie';
 
-const AUTH_USER = 'AUTH_USER',
-      UNAUTH_USER = 'UNAUTH_USER',
-      AUTH_ERROR = 'AUTH_ERROR',
-      FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST',
-      RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST',
-      PROTECTED_TEST = 'PROTECTED_TEST';
+export const  AUTH_USER = 'AUTH_USER',
+              UNAUTH_USER = 'UNAUTH_USER',
+              AUTH_ERROR = 'AUTH_ERROR',
+              FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST',
+              RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST',
+              PROTECTED_TEST = 'PROTECTED_TEST';
 
 const API_URL = 'http://localhost:3000/api';
 
@@ -68,6 +68,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 
 export function logoutUser() {
   return (dispatch) => {
+    console.log("ready to logout");
     dispatch({ type: UNAUTH_USER });
     cookie.remove('token', { path: '/' });
     cookie.remove('user', { path: '/' });
