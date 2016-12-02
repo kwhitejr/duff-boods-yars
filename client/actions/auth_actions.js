@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux';
 import cookie from 'react-cookie';
 
-const AUTH_USER = 'AUTH_USER',  
+const AUTH_USER = 'AUTH_USER',
       UNAUTH_USER = 'UNAUTH_USER',
       AUTH_ERROR = 'AUTH_ERROR',
       FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST',
@@ -56,10 +55,8 @@ export function registerUser({ email, firstName, lastName, password }) {
   return (dispatch) => {
     axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
       .then(response => {
-        console.log('inside response', response);
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
-        console.log('about to dispatch AUTH_USER');
         dispatch({ type: AUTH_USER });
         dispatch(push('/'));
       })
@@ -70,7 +67,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 }
 
 export function logoutUser() {
-  return function (dispatch) {
+  return (dispatch) => {
     dispatch({ type: UNAUTH_USER });
     cookie.remove('token', { path: '/' });
     cookie.remove('user', { path: '/' });
@@ -80,18 +77,18 @@ export function logoutUser() {
 }
 
 export function protectedTest() {
-  return function(dispatch) {
+  return (dispatch) => {
     axios.get(`${API_URL}/protected`, {
       headers: { Authorization: cookie.load('token') },
     })
       .then(response => {
         dispatch({
           type: PROTECTED_TEST,
-          payload: response.data.content
+          payload: response.data.content,
         });
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
   }
 }
