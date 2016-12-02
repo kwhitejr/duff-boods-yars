@@ -1,22 +1,24 @@
+import config from '../config/main';
+
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const User = require('../schema/user_schema');
+// const crypto = require('crypto');
+const mongoose = require('mongoose');
+// const User = require('../schema/user_schema');
 // const mailgun = require('../config/mailgun');
 // const mailchimp = require('../config/mailchimp');
 // const setUserInfo = require('../helpers').setUserInfo;
-const config = require('../config/main');
 
 // Generate JWT
 function generateToken(user) {
   return jwt.sign(user, config.secret, {
-    expiresIn: 10080 // in seconds
+    expiresIn: 10080, // in seconds
   });
 }
 
 //= =======================================
 // Login Route
 //= =======================================
-exports.login = function (req, res, next) {
+exports.login = (req, res, next) => {
   const userInfo = {
     _id: req._id,
     firstName: req.firstName,
@@ -26,7 +28,7 @@ exports.login = function (req, res, next) {
 
   res.status(200).json({
     token: `JWT ${generateToken(userInfo)}`,
-    user: userInfo
+    user: userInfo,
   });
 };
 
@@ -34,8 +36,9 @@ exports.login = function (req, res, next) {
 //= =======================================
 // Registration Route
 //= =======================================
-exports.register = function (req, res, next) {
+exports.register = (req, res, next) => {
   // Check for registration errors
+  console.log('inside post: ', req.body);
   const email = req.body.email;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -56,7 +59,7 @@ exports.register = function (req, res, next) {
     return res.status(422).send({ error: 'You must enter a password.' });
   }
 
-  User.findOne({ email }, (err, existingUser) => {
+  mongoose.model('User').findOne({ email }, (err, existingUser) => {
     if (err) { return next(err); }
 
       // If user is not unique, return error
@@ -64,11 +67,13 @@ exports.register = function (req, res, next) {
       return res.status(422).send({ error: 'That email address is already in use.' });
     }
 
+    const User = mongoose.model('User');
       // If email is unique and password was provided, create account
     const user = new User({
       email,
       password,
-      profile: { firstName, lastName }
+      firstName,
+      lastName,
     });
 
     user.save((err, user) => {
@@ -79,11 +84,16 @@ exports.register = function (req, res, next) {
 
         // Respond with JWT if user was created
 
-      const userInfo = setUserInfo(user);
+      const userInfo = {
+        email: user.email,
+        password: user.password,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      };
 
       res.status(201).json({
         token: `JWT ${generateToken(userInfo)}`,
-        user: userInfo
+        user: userInfo,
       });
     });
   });

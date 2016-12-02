@@ -7,28 +7,28 @@ const Schema = mongoose.Schema;
 // User Schema
 //= ===============================
 const UserSchema = new Schema({
-  email: { 
-    type: String, 
+  email: {
+    type: String,
     required: true,
     unique: true,
-    lowercase: true, 
+    lowercase: true,
   },
-  password: { 
-    type: String, 
-    required: true
+  password: {
+    type: String,
+    required: true,
   },
-  first_name: { 
-    type: String, 
-    required: true
+  firstName: {
+    type: String,
+    required: true,
   },
-  last_name: { 
-    type: String, 
-    required: true 
+  lastName: {
+    type: String,
+    required: true,
   },
-  // may need to convert `workouts` to (http://mongoosejs.com/docs/2.7.x/docs/populate.html): 
+  // may need to convert `workouts` to (http://mongoosejs.com/docs/2.7.x/docs/populate.html):
   // [{ type: Schema.ObjectId, ref 'Workout'}]
   // var Workout = mongoose.model('Workout', WorkoutSchema);
-  workouts: { type: Array, default: [] }, 
+  workouts: { type: Array, default: [] },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
 });
@@ -39,8 +39,8 @@ const UserSchema = new Schema({
 
 // Pre-save of user to database, hash password if password is modified or new
 UserSchema.pre('save', function (next) {
-  const user = this,
-    SALT_FACTOR = 5;
+  const user = this;
+  const SALT_FACTOR = 5;
 
   if (!user.isModified('password')) return next();
 

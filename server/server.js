@@ -12,15 +12,16 @@ import APIrouter from './router';
 const isProduction = config.env === 'production';
 const app = express();
 
-app.listen(config.port, () =>
-  console.info(`Server running in ${app.get('env')} on port ${config.port}`) // eslint-disable-line no-console
-);
-
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(morgan(isProduction ? 'combined' : 'dev'));
+app.use(cors());
+
+app.listen(config.port, () =>
+  console.info(`Server running in ${app.get('env')} on port ${config.port}`) // eslint-disable-line no-console
+);
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -32,7 +33,6 @@ mongoose.connect(config.mongoURL, (error) => {
     throw error;
   }
 });
-
-app.use(cors());
+require('./schema/user_schema');
 
 APIrouter(app);
