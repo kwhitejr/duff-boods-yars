@@ -12,12 +12,12 @@ const AUTH_USER = 'AUTH_USER',
 
 const API_URL = 'http://localhost:3000/api';
 
-export function errorHandler(dispatch, error, type) { 
+export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
-  if(error.data.error) {
+  if (error.data.error) {
     errorMessage = error.data.error;
-  } else if(error.data) {
+  } else if (error.data) {
     errorMessage = error.data;
   } else {
     errorMessage = error;
@@ -44,7 +44,7 @@ export function loginUser({ email, password }) {
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
         dispatch({ type: AUTH_USER });
-        window.location.href = '/';
+        dispatch(push('/'));
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);
@@ -75,7 +75,7 @@ export function logoutUser() {
     cookie.remove('token', { path: '/' });
     cookie.remove('user', { path: '/' });
 
-    window.location.href = '/login';
+    dispatch(push('/'));
   };
 }
 
