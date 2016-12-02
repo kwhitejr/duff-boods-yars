@@ -38,7 +38,6 @@ exports.login = (req, res, next) => {
 //= =======================================
 exports.register = (req, res, next) => {
   // Check for registration errors
-  console.log('inside post: ', req.body);
   const email = req.body.email;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;

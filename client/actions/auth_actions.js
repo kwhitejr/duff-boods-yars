@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import { push } from 'react-router-redux';
 import cookie from 'react-cookie';
 
 const AUTH_USER = 'AUTH_USER',  
@@ -36,8 +37,8 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function loginUser({ email, password }) {  
-  return function(dispatch) {
+export function loginUser({ email, password }) {
+  return (dispatch) => {
     axios.post(`${API_URL}/auth/login`, { email, password })
       .then(response => {
         cookie.save('token', response.data.token, { path: '/' });
@@ -46,20 +47,21 @@ export function loginUser({ email, password }) {
         window.location.href = '/';
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
-  }
+  };
 }
 
 export function registerUser({ email, firstName, lastName, password }) {
-  return function (dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
       .then(response => {
-        console.log(response);
+        console.log('inside response', response);
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
+        console.log('about to dispatch AUTH_USER');
         dispatch({ type: AUTH_USER });
-        window.location.href = '/';
+        dispatch(push('/'));
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);
