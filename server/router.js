@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 
 import AuthController from './controllers/authentication';
-import passportService from './config/passport';
+// import passportService from './config/passport';
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });

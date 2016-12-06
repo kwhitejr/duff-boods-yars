@@ -37,12 +37,12 @@ exports.login = (req, res, next) => {
 // Registration Route
 //= =======================================
 exports.register = (req, res, next) => {
-  // Check for registration errors
   const email = req.body.email;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const password = req.body.password;
 
+  // Check for registration errors
   // Return error if no email provided
   if (!email) {
     return res.status(422).send({ error: 'You must enter an email address.' });
