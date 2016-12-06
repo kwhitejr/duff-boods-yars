@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
-import WorkoutForm from './WorkoutForm'
-import WorkoutHead from '../../components/WorkoutHead';
+import React, { Component, PropTypes } from 'react';
+import WorkoutForm from './WorkoutForm';
+import WorkoutHead from 'components/WorkoutHead';
 
 class WorkoutWizard extends Component {
   constructor(props) {

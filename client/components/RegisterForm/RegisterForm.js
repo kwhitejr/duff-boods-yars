@@ -1,9 +1,9 @@
-import React, { Component } from 'react';  
-import { connect } from 'react-redux';  
-import { Field, reduxForm } from 'redux-form';  
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions/auth_actions';
-import validate from './validate'
-import renderField from './renderField'
+import validate from './validate';
+import renderField from './renderField';
 
 class Register extends Component {  
   handleFormSubmit(formProps) {

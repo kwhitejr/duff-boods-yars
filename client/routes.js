@@ -38,6 +38,14 @@ export default {
       },
     },
     {
+      path: 'workout',
+      getComponent(location, cb) {
+        System.import('containers/Workout')
+          .then(loadRoute(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
       path: '*',
       getComponent(location, cb) {
         System.import('containers/NotFound')
