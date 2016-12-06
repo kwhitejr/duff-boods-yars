@@ -1,13 +1,13 @@
 :root {
   /* Colors */
-  --primary: #75d2d3;
-  --secondary: #b54d4e;
-  --lite: #e7dee9;
-  --dark: #433a5a;
+  --primary: #00BCD4;
+  --secondary: #006064;
+  --lite: #E3F2FD;
+  --dark: #0D47A1;
   --white: #f6f4f9;
   --black: #000;
 
   /* Background Gradients */
-  --gradientTop: #282140;
-  --gradientBottom: #312c47;
+  --gradientTop: #64B5F6;
+  --gradientBottom: #2196F3;
 }

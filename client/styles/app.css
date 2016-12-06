@@ -51,7 +51,7 @@ h1 {
 
 input {
   color: var(--dark);
-  background: var(--primary);
+  background: var(--lite);
 }
 
 a {
@@ -60,7 +60,7 @@ a {
 
   &:hover,
   &:global(.active) {
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--dark);
   }
 
   &:global(.active) {

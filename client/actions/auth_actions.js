@@ -31,15 +31,17 @@ export function errorHandler(dispatch, error, type) {
   } else {
     dispatch({
       type: type,
-      payload: errorMessage
+      payload: errorMessage,
     });
   }
 }
 
 export function loginUser({ email, password }) {
+  console.log("auth login action fired.");
   return (dispatch) => {
     axios.post(`${API_URL}/auth/login`, { email, password })
       .then(response => {
+        console.log("auth response received");
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
         dispatch({ type: AUTH_USER });
@@ -68,7 +70,6 @@ export function registerUser({ email, firstName, lastName, password }) {
 
 export function logoutUser() {
   return (dispatch) => {
-    console.log("ready to logout");
     dispatch({ type: UNAUTH_USER });
     cookie.remove('token', { path: '/' });
     cookie.remove('user', { path: '/' });
