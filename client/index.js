@@ -5,6 +5,7 @@ import { Router, hashHistory } from 'react-router/es6';
 import { syncHistoryWithStore } from 'react-router-redux';
 import cookie from 'react-cookie';
 import { install as offlineInstall } from 'offline-plugin/runtime'; // eslint-disable-line
+import jwtDecode from 'jwt-decode';
 
 import routes from 'routes';
 import configureStore from 'store';

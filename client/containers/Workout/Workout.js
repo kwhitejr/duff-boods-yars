@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import cookie from 'react-cookie';
 import React, { Component } from 'react';
 import { reset } from 'redux-form';
 
 import WorkoutWizard from 'components/WorkoutWizard';
 import SelectorWizard from 'components/SelectorWizard';
 
-import { gatherFormData, storeExerciseData, postWorkoutData } from 'actions/workout_actions';
+import { gatherFormData, postWorkoutData } from 'actions/workout_actions';
 import { fetchWorkout } from 'actions/selector_actions';
 
 class WorkoutContainer extends Component {
 
   renderComponent() {
+    const user = cookie.load('user');
+    console.log(jwtDecode(user));
+    
     if (!this.props.selectedWorkout) {
       return (
         <SelectorWizard {...this.props} />

@@ -2,7 +2,8 @@ import express from 'express';
 import passport from 'passport';
 
 import AuthController from './controllers/authentication';
-// import passportService from './config/passport';
+import DataController from './controllers/dataSubmission';
+import passportService from './config/passport';
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -13,6 +14,7 @@ module.exports = function (app) {
   // Initialize route groups
   const apiRoutes = express.Router();
   const authRoutes = express.Router();
+  const dataRoutes = express.Router();
 
   //= ========================
   // Auth Routes
@@ -27,6 +29,18 @@ module.exports = function (app) {
   // Login route
   authRoutes.post('/login', requireLogin, AuthController.login);
 
+  //= ========================
+  // Data Routes
+  //= ========================
+
+  // Set data routes as subgroup/middleware to apiRoutes
+  apiRoutes.use('/data', dataRoutes);
+
+  // Workout route
+  dataRoutes.post('/workout', DataController.submitWorkout);
+
+  // Workout route
+  // dataRoutes.post('/program', DataController.submitProgram);
 
   //= ========================
   // API Routes Wrapper

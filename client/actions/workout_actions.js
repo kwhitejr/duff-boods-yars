@@ -25,7 +25,7 @@ export function gatherFormData(exerciseName) {
 
 export function postWorkoutData({ data }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/workout`, { data })
+    axios.post(`${API_URL}/data/workout`, { data })
       .then(response => {
         // cookie.save('token', response.data.token, { path: '/' });
         // cookie.save('user', response.data.user, { path: '/' });
