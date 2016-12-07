@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 
-import workouts from '../../config/workouts';
+import workouts from 'config/workouts';
 
 export const  RECEIVE_WORKOUT = 'RECEIVE_WORKOUT',
               SET_SCHEDULE = 'SET_SCHEDULE';
@@ -9,7 +9,7 @@ function receiveWorkout(selectedWorkout) {
   return {
     type: 'RECEIVE_WORKOUT',
     selectedWorkout,
-  }
+  };
 }
 
 function setSchedule(schedule) {

@@ -7,6 +7,7 @@ import WorkoutWizard from 'components/WorkoutWizard';
 import SelectorWizard from 'components/SelectorWizard';
 
 import { gatherFormData, storeExerciseData } from '../../actions/workout_actions';
+import { fetchWorkout } from '../../actions/selector_actions';
 
 class WorkoutContainer extends Component {
 
@@ -38,6 +39,7 @@ const mapDispatchToProps = (dispatch) => ({
   gatherFormData:     (exerciseName) => dispatch(gatherFormData(exerciseName)),
   storeExerciseData:  () => dispatch(storeExerciseData()),
   reset:              () => dispatch(reset('workout')),
+  fetchWorkout:       () => dispatch(fetchWorkout()),
 });
 
 export default connect(
