@@ -8,17 +8,23 @@ import { install as offlineInstall } from 'offline-plugin/runtime'; // eslint-di
 
 import routes from 'routes';
 import configureStore from 'store';
-import { AUTH_USER } from 'actions/auth_actions';
+import { AUTH_USER, STORE_USER } from 'actions/auth_actions';
 import 'styles/app.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 const token = cookie.load('token');
+const user = cookie.load('user');
 
 if (token) {
   // Update application state. User has token and is probably authenticated
   store.dispatch({ type: AUTH_USER });
+}
+
+if (user) {
+  // Update application state with user data.
+  store.dispatch({ type: STORE_USER, payload: user });
 }
 
 render(

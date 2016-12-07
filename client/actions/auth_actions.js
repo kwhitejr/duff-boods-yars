@@ -61,6 +61,7 @@ export function registerUser({ email, firstName, lastName, password }) {
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
         dispatch({ type: AUTH_USER });
+        dispatch({ type: STORE_USER, payload: response.data.user });
         dispatch(push('/'));
       })
       .catch((error) => {

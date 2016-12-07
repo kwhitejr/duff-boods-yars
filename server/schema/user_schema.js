@@ -29,8 +29,9 @@ const UserSchema = new Schema({
   // [{ type: Schema.ObjectId, ref 'Workout'}]
   // var Workout = mongoose.model('Workout', WorkoutSchema);
   workouts: { type: Array, default: [] },
-  resetPasswordToken: { type: String },
-  resetPasswordExpires: { type: Date },
+  programs: { type: Array, default: [] },
+  // resetPasswordToken: { type: String },
+  // resetPasswordExpires: { type: Date },
 });
 
 //= ===============================
