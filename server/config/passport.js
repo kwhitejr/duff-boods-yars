@@ -31,7 +31,7 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
           error: 'Your login details could not be verified. Please try again.',
         });
       }
-
+      console.log(user);
       return done(null, user);
     });
   });

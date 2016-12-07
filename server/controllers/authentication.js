@@ -19,11 +19,13 @@ function generateToken(user) {
 // Login Route
 //= =======================================
 exports.login = (req, res, next) => {
+  // console.log("login function", req.user);
   const userInfo = {
-    _id: req._id,
-    firstName: req.firstName,
-    lastName: req.lastName,
-    email: req.email,
+    _id:        req.user._id,
+    firstName:  req.user.firstName,
+    lastName:   req.user.lastName,
+    email:      req.user.email,
+    workouts:   req.user.workouts,
   };
 
   res.status(200).json({

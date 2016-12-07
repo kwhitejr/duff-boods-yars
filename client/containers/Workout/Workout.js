@@ -13,9 +13,8 @@ import { fetchWorkout } from 'actions/selector_actions';
 class WorkoutContainer extends Component {
 
   renderComponent() {
-    const user = cookie.load('user');
-    console.log(jwtDecode(user));
-    
+
+
     if (!this.props.selectedWorkout) {
       return (
         <SelectorWizard {...this.props} />

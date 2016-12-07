@@ -7,7 +7,8 @@ export const  AUTH_USER = 'AUTH_USER',
               AUTH_ERROR = 'AUTH_ERROR',
               FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST',
               RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST',
-              PROTECTED_TEST = 'PROTECTED_TEST';
+              PROTECTED_TEST = 'PROTECTED_TEST',
+              STORE_USER = 'STORE_USER';
 
 const API_URL = 'http://localhost:3000/api';
 
@@ -40,9 +41,11 @@ export function loginUser({ email, password }) {
   return (dispatch) => {
     axios.post(`${API_URL}/auth/login`, { email, password })
       .then(response => {
+        console.log(response);
         cookie.save('token', response.data.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
         dispatch({ type: AUTH_USER });
+        dispatch({ type: STORE_USER, payload: response.data.user });
         dispatch(push('/'));
       })
       .catch((error) => {
