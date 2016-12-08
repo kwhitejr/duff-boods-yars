@@ -26,9 +26,11 @@ exports.submitWorkout = (req, res, next) => {
 exports.createNewProgram = (req, res, next) => {
   const programType = req.body.programType;
   const user = cookie.load('user');
-  console.log(programType);
-  console.log(user);
   const user_id = user._id;
+  const last_modified = Date.Now();
+  console.log(programType);
+  console.log(user_id);
+  console.log(last_modified);
 
   //-------------------
   // Error Handling
@@ -57,6 +59,7 @@ exports.createNewProgram = (req, res, next) => {
 
     const program = new Program({
       user_id,
+      last_modified,
       program_type: programType,
     });
 
