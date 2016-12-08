@@ -33,7 +33,31 @@ export function postWorkoutData({ data }) {
         dispatch(push('/'));
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR);
+        errorHandler(dispatch, error.response, DATA_ERROR);
+      });
+  };
+}
+
+export function postNewProgram({ programType }) {
+  return (dispatch) => {
+    axios.post(`${API_URL}/data/program`, { programType })
+      .then(response => {
+        dispatch(push('/workout'));
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, DATA_ERROR);
+      });
+  };
+}
+
+export function getCurrentProgram() {
+  return (dispatch) => {
+    axios.get(`${API_URL}/data/program`)
+      .then(response => {
+        dispatch(push('/workout'));
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, DATA_ERROR);
       });
   };
 }

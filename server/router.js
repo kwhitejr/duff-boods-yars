@@ -37,10 +37,17 @@ module.exports = function (app) {
   apiRoutes.use('/data', dataRoutes);
 
   // Workout route
+
+  // Submit workout data
   dataRoutes.post('/workout', DataController.submitWorkout);
 
-  // Workout route
-  // dataRoutes.post('/program', DataController.submitProgram);
+  // Program route
+
+  // Get current program
+  dataRoutes.get('/program', DataController.getCurrentProgram);
+
+  // Create new program
+  dataRoutes.post('/program', DataController.createNewProgram);
 
   //= ========================
   // API Routes Wrapper

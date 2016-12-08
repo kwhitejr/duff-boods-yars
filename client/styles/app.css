@@ -40,6 +40,7 @@ button {
   outline: none;
   cursor: pointer;
   background: var(--secondary);
+  margin: 10px;
 }
 
 h1 {

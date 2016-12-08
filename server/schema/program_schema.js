@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 // Program Schema
 //= ===============================
 const programSchema = new Schema({
-  user: { type: String, required: true }, // FK User
+  user_id: { type: String, required: true }, // FK User
   start_date: { type: Date, required: false },
   stop_date: { type: Date, required: false },
-  program_title: { type: String, required: true },
+  program_type: { type: String, required: true },
   workouts: { type: Array, default: [] },
 });
 

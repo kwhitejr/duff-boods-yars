@@ -1,7 +1,6 @@
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import cookie from 'react-cookie';
-import React, { Component } from 'react';
 import { reset } from 'redux-form';
 
 import WorkoutWizard from 'components/WorkoutWizard';
@@ -13,8 +12,6 @@ import { fetchWorkout } from 'actions/selector_actions';
 class WorkoutContainer extends Component {
 
   renderComponent() {
-
-
     if (!this.props.selectedWorkout) {
       return (
         <SelectorWizard {...this.props} />

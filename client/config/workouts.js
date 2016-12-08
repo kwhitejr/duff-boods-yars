@@ -8,7 +8,7 @@
 *   track: String - the type of input to track (i.e. lbs kgs rep#)
 *************/
 
-export default [
+export const thirdEdition = [
   {
     id:     [1,1], 
     title:  'Back & Rear Deltoids',
@@ -16,12 +16,12 @@ export default [
       {
         name: 'deadlifts',
         sets: [10,8,6,4],
-        track: 'weight',   
+        track: 'weight',  
       },
       {
         name: 'pullups',
         sets: [10,10,10,10],
-        track: 'sets',
+        track: 'reps',
       },
       {
         name: 'single arm dumbbell row',
@@ -185,7 +185,7 @@ export default [
       {
         name: 'lateral box squats',
         sets: [10,10,10],
-        track: 'sets',
+        track: 'reps',
       },
       {
         name: 'romanian deadlifts',
@@ -216,7 +216,7 @@ export default [
       {
         name: 'v-grip pullups',
         sets: [8,8,8,8],
-        track: 'sets',
+        track: 'reps',
       },
       {
         name: 'dumbbell pull-overs',
@@ -341,6 +341,6 @@ export default [
         sets: [12,12,12,12],
         track: 'weight',
       },
-    ]
+    ],
   },
-]
+];
