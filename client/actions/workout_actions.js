@@ -53,8 +53,6 @@ export function postWorkoutData({ data }) {
   return (dispatch) => {
     axios.post(`${API_URL}/data/workout`, { data })
       .then(response => {
-        // cookie.save('token', response.data.token, { path: '/' });
-        // cookie.save('user', response.data.user, { path: '/' });
         dispatch({ type: CLEAR_WORKOUT_STORE });
         dispatch(push('/'));
       })
@@ -64,9 +62,9 @@ export function postWorkoutData({ data }) {
   };
 }
 
-export function postNewProgram({ programType }) {
+export function postNewProgram( userId, programType ) {
   return (dispatch) => {
-    axios.post(`${API_URL}/data/program`, { programType })
+    axios.post(`${API_URL}/data/program`, { userId, programType })
       .then(response => {
         dispatch(push('/workout'));
       })

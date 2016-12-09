@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 
 import AuthController from './controllers/authentication';
-import DataController from './controllers/dataSubmission';
+import DataController from './controllers/dataController';
 import passportService from './config/passport';
 
 // Middleware to require login/auth
