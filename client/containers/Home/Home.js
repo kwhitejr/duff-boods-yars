@@ -1,6 +1,7 @@
 import Helmet from 'react-helmet';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import styles from './Home.css';
 
 import { postNewProgram, getCurrentProgram } from 'actions/workout_actions';
 
@@ -23,6 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
   postNewProgram: (programType) => dispatch(postNewProgram(programType)),
   getCurrentProgram: () => dispatch(getCurrentProgram()),
 });
+
+Home.propTypes = {
+  postNewProgram: PropTypes.func.isRequired,
+  getCurrentProgram: PropTypes.func.isRequired,
+};
 
 export default connect(
   // mapStateToProps,

@@ -4,8 +4,34 @@ import { push } from 'react-router-redux';
 
 export const CLEAR_WORKOUT_STORE = 'CLEAR_WORKOUT_STORE';
 export const SET_EXERCISE_DATA = 'SET_EXERCISE_DATA';
+export const DATA_ERROR = 'DATA_ERROR';
 
 const API_URL = 'http://localhost:3000/api';
+
+export function errorHandler(dispatch, error, type) {
+  let errorMessage = '';
+
+  if (error.data.error) {
+    errorMessage = error.data.error;
+  } else if (error.data) {
+    errorMessage = error.data;
+  } else {
+    errorMessage = error;
+  }
+
+  if (error.status === 401) {
+    dispatch({
+      type: type,
+      payload: 'You are not authorized to do this. Please login and try again.',
+    });
+    logoutUser();
+  } else {
+    dispatch({
+      type: type,
+      payload: errorMessage,
+    });
+  }
+}
 
 function setExerciseData(exerciseName, value) {
   return {

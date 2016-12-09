@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 
-import workouts from 'config/workouts';
+import { thirdEdition } from 'config/workouts';
 
 export const  RECEIVE_WORKOUT = 'RECEIVE_WORKOUT',
               SET_SCHEDULE = 'SET_SCHEDULE';
@@ -29,7 +29,7 @@ export function fetchWorkout() {
     };
     const workoutId = schedule.phase + schedule.day;
     // const workouts = fetch(`../../config/workouts`);
-    const selectedWorkout = workouts.filter(x => x.id.join('') === workoutId);
+    const selectedWorkout = thirdEdition.filter(x => x.id.join('') === workoutId);
 
     dispatch(receiveWorkout(selectedWorkout[0]));
     dispatch(setSchedule(schedule));

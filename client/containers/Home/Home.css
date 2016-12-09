@@ -32,3 +32,7 @@
     border-bottom: 1px solid var(--primary);
   }
 }
+
+button {
+  margin: 10px;
+}
