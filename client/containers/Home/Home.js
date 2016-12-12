@@ -29,7 +29,7 @@ class Home extends Component {
       <Helmet title="Home" />
       <h1>Duff Boods Home</h1>
       <button onClick={this.handleNewGame}>New Game</button>
-      <button onClick={this.props.getCurrentProgram}>Continue</button>
+      <button onClick={this.handleContinue}>Continue</button>
     </div>);
   }
 };
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   postNewProgram: (userId, programType) => dispatch(postNewProgram(userId, programType)),
-  getCurrentProgram: (userId) => dispatch(getCurrentProgram()),
+  getCurrentProgram: (userId) => dispatch(getCurrentProgram(userId)),
 });
 
 Home.propTypes = {

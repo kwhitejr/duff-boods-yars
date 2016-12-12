@@ -7,7 +7,7 @@ const ObjectId = Schema.ObjectId;
 // Program Schema
 //= ===============================
 const programSchema = new Schema({
-  user_id:        { type: ObjectId, required: true }, // FK User
+  user_id:        { type: ObjectId, ref: 'User', required: true }, // FK User
   last_modified:  { type: Date, required: true },
   start_date:     { type: Date, required: false },
   stop_date:      { type: Date, required: false },

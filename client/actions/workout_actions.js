@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 export const CLEAR_WORKOUT_STORE = 'CLEAR_WORKOUT_STORE';
 export const SET_EXERCISE_DATA = 'SET_EXERCISE_DATA';
 export const DATA_ERROR = 'DATA_ERROR';
+export const SET_PROGRAM_TYPE = 'SET_PROGRAM_TYPE';
 
 const API_URL = 'http://localhost:3000/api';
 
@@ -62,10 +63,11 @@ export function postWorkoutData({ data }) {
   };
 }
 
-export function postNewProgram( userId, programType ) {
+export function postNewProgram(userId, programType) {
   return (dispatch) => {
     axios.post(`${API_URL}/data/program`, { userId, programType })
       .then(response => {
+        dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.program }); // put program info into workout store
         dispatch(push('/workout'));
       })
       .catch((error) => {
@@ -74,10 +76,11 @@ export function postNewProgram( userId, programType ) {
   };
 }
 
-export function getCurrentProgram() {
+export function getCurrentProgram(userId) {
   return (dispatch) => {
-    axios.get(`${API_URL}/data/program`)
+    axios.get(`${API_URL}/data/program?user_id=${userId}`)
       .then(response => {
+        dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.program }); // put program info into workout store
         dispatch(push('/workout'));
       })
       .catch((error) => {

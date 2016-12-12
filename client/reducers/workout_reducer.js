@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 const SET_EXERCISE_DATA = 'SET_EXERCISE_DATA';
 const CLEAR_WORKOUT_STORE = 'CLEAR_WORKOUT_STORE';
 const DATA_ERROR = 'DATA_ERROR';
+const SET_PROGRAM_TYPE = 'SET_PROGRAM_TYPE';
 
 const INITIAL_STATE = {
   error: '',
@@ -28,6 +29,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, workout: null };
     case DATA_ERROR:
       return { ...state, error: action.payload };
+    case SET_PROGRAM_TYPE:
+      return { ...state, program: action.payload };
   }
   return state;
 }

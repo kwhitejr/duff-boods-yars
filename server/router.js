@@ -44,7 +44,7 @@ module.exports = function (app) {
   // Program route
 
   // Get current program
-  // dataRoutes.get('/program', DataController.getCurrentProgram);
+  dataRoutes.get('/program', DataController.getCurrentProgram);
 
   // Create new program
   dataRoutes.post('/program', DataController.createNewProgram);
