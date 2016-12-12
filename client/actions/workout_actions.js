@@ -50,9 +50,9 @@ export function gatherFormData(exerciseName) {
   };
 }
 
-export function postWorkoutData({ data }) {
+export function postNewWorkout({ userId, workoutKey, workoutData }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/data/workout`, { data })
+    axios.post(`${API_URL}/data/workout`, { userId, workoutKey, workoutData })
       .then(response => {
         dispatch({ type: CLEAR_WORKOUT_STORE });
         dispatch(push('/'));
@@ -68,6 +68,7 @@ export function postNewProgram(userId, programType) {
     axios.post(`${API_URL}/data/program`, { userId, programType })
       .then(response => {
         dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.program }); // put program info into workout store
+        // step: must load next workout for current program
         dispatch(push('/workout'));
       })
       .catch((error) => {

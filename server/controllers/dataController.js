@@ -1,25 +1,61 @@
 import workouts from '../../client/config/workouts';
+import Workout from '../schema/workout_schema';
 import Program from '../schema/program_schema';
 
 const mongoose = require('mongoose');
 
 exports.submitWorkout = (req, res, next) => {
-  const workoutId = req.body.workoutId; // [phase, day, week]
-  const workoutData = req.body.workoutData; // { exercise: [] }
+  const workout_key = req.body.workoutKey; // [phase, day, week]
+  const workoutData = req.body.workoutData; // { exercise: [], ... }
+  const user_id = req.body.userId;
+  const program_id = req.body.programId;
+  const stop_time = new Date;
 
   //-------------------
   // Error Handling
   //-------------------
 
-  // Return error if no ID is provided
-  if (!workoutId) {
-    return res.status(422).send({ error: 'No workout ID was provided.' });
+  // Return error if no user ID is provided
+  if (!user_id) {
+    return res.status(422).send({ error: 'No user id was provided.' });
   }
 
-  // Return error if no data is provided
+  // Return error if workout Key is provided
+  if (!workoutKey) {
+    return res.status(422).send({ error: 'No workout key was provided.' });
+  }
+
+  // Return error if no workout data is provided
   if (!workoutData) {
     return res.status(422).send({ error: 'No workout data was provided.' });
   }
+
+  Workout.findOne({ user_id, program_id }, (err, existingWorkout) => {
+    // If error, return error
+    if (err) { return next(err); }
+
+    // If this user already has a program of type programType, send warning 
+    if (existingWorkout) {
+      return res.status().send({ error: 'That workout already exists for this program.' });
+    }
+
+    const workout = new Workout({
+      user_id,
+      program_id,
+      stop_date,
+      workout_key,
+      exercises: workoutData,
+    });
+
+    workout.save((err, workout) => {
+      if (err) { return next(err); }
+
+      // update user cookie?
+      res.status(200).send({
+        msg: 'Success',
+      });
+    });
+  });
 }
 
 exports.createNewProgram = (req, res, next) => {
@@ -32,12 +68,12 @@ exports.createNewProgram = (req, res, next) => {
   // Error Handling
   //-------------------
 
-  // Return error if no ID is provided
+  // Return error if no program type is provided
   if (!programType) {
     return res.status(422).send({ error: 'No program type was provided.' });
   }
 
-  // Return error if no data is provided
+  // Return error if no user ID is provided
   if (!user_id) {
     return res.status(422).send({ error: 'No user id was provided.' });
   }
