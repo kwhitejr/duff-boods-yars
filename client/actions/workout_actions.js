@@ -51,7 +51,8 @@ export function gatherFormData(exerciseName) {
   };
 }
 
-export function postWorkout({ userId, programId, workoutKey, workoutData }) {
+export function postWorkout(userId, programId, workoutKey, workoutData) {
+  console.log("inside action, userId", userId)
   return (dispatch) => {
     axios.post(`${API_URL}/data/workout`, { userId, programId, workoutKey, workoutData })
       .then(response => {

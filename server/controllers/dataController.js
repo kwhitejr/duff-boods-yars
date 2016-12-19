@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.postWorkout = (req, res, next) => {
+  console.log(req);
   const workout_key = req.body.workoutKey; // [phase, day, week]
   const workoutData = req.body.workoutData; // { exercise: [], ... }
   const user_id = req.body.userId;
@@ -22,7 +23,7 @@ exports.postWorkout = (req, res, next) => {
   }
 
   // Return error if workout Key is provided
-  if (!workoutKey) {
+  if (!workout_key) {
     return res.status(422).send({ error: 'No workout key was provided.' });
   }
 
@@ -31,7 +32,11 @@ exports.postWorkout = (req, res, next) => {
     return res.status(422).send({ error: 'No workout data was provided.' });
   }
 
-  Workout.findOne({ user_id, program_id }, (err, existingWorkout) => {
+  Workout.findOne({ 
+    user_id: ObjectId(user_id), 
+    program_id: ObjectId(program_id), 
+    workout_key: workout_key 
+  }, (err, existingWorkout) => {
     // If error, return error
     if (err) { return next(err); }
 
@@ -87,8 +92,6 @@ exports.postProgram = (req, res, next) => {
     // if (existingProgram) {
     //   return res.status().send({ error: 'That program already exists' });
     // }
-
-    // const Program = mongoose.model('Program');
 
     const program = new Program({
       user_id,

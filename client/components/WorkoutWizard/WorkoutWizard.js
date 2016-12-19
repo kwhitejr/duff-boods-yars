@@ -34,14 +34,15 @@ class WorkoutWizard extends Component {
   nextExercise() {
     const { selectedWorkout } = this.props;
     this.handleSubmitExercise();
-    this.setState({ 
-      exerciseIndex: this.state.exerciseIndex + 1, // number represents array index
-      page: 1,
-      setIndex: 0,
-    });
-    if (this.state.exerciseIndex === selectedWorkout.exercises.length) {
+    if (this.state.exerciseIndex === selectedWorkout.exercises.length - 1) {
       this.handleSubmitWorkout()
-    } 
+    } else { 
+      this.setState({ 
+        exerciseIndex: this.state.exerciseIndex + 1, // number represents array index
+        page: 1,
+        setIndex: 0,
+      });
+    }
   }
 
   previousExercise() {
@@ -59,8 +60,12 @@ class WorkoutWizard extends Component {
   }
 
   handleSubmitWorkout() {
-    const { postWorkout, userId, programId, selectedWorkout, week, workoutData } = this.props;
+    const { postWorkout, userId, programId, selectedWorkout, workoutData, reset, week } = this.props;
     const workoutKey = selectedWorkout.id.join('') + week; // need to define week
+    console.log("userId", userId);
+    console.log("programId", programId);
+    console.log("workoutKey", workoutKey);
+    console.log("workoutData", workoutData);
     postWorkout(userId, programId, workoutKey, workoutData)
     reset();
   }

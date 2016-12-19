@@ -33,7 +33,7 @@ class WorkoutContainer extends Component {
 
 const mapStateToProps = (state) => ({
   selectedWorkout:  state.selector.selectedWorkout,
-  week:             state.selector.week, // need to create this
+  week:             state.selector.schedule.week, // need to create this
   userId:           state.workout.program.user_id,
   programId:        state.workout.program._id,
   workoutData:      state.workout.exercises,
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   gatherFormData:     (exerciseName) => dispatch(gatherFormData(exerciseName)),
-  postWorkout:     (userId, programId, workoutKey, workoutData) => dispatch(postWorkout(userId, programId, workoutKey, workoutData)),
+  postWorkout:        (userId, programId, workoutKey, workoutData) => dispatch(postWorkout(userId, programId, workoutKey, workoutData)),
   reset:              () => dispatch(reset('workout')),
   fetchWorkout:       () => dispatch(fetchWorkout()),
 });
