@@ -11,7 +11,7 @@ const workoutSchema = new Schema({
   program_id: { type: ObjectId, ref: 'Program', required: true }, // FK Program
   start_time: { type: Date, required: false },
   stop_time: { type: Date, required: false },
-  workout_key: { type: String, required: true },
+  workout_key: { type: String, required: true }, // e.g. "113" Phase-Day-Week
   exercises: [
     { name: String, sets: Array },
   ],

@@ -110,7 +110,6 @@ exports.postProgram = (req, res, next) => {
 exports.getCurrentProgram = (req, res, next) => {
   const ObjectId = mongoose.Types.ObjectId;
   const user_id = req.query.user_id;
-  // console.log(user_id);
   
   if (!user_id) {
     return res.status(422).send({ error: 'No user ID was provided.' });
@@ -128,9 +127,6 @@ exports.getCurrentProgram = (req, res, next) => {
       if (!programs) { 
         return res.status(422).send({ error: 'This user has no programs.' });
       }
-
-      // received all programs associated with user_id?
-      // console.log(programs); 
 
       const currentProgram = programs[0]; // if sort desc worked, most current is at index 0
 

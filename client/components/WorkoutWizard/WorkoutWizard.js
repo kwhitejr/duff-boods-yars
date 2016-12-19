@@ -59,8 +59,9 @@ class WorkoutWizard extends Component {
   }
 
   handleSubmitWorkout() {
-    const { postWorkout, userId, programId } = this.props;
-    postWorkout(/*userId, programId, workoutKey, workoutData*/)
+    const { postWorkout, userId, programId, selectedWorkout, week, workoutData } = this.props;
+    const workoutKey = selectedWorkout.id.join('') + week; // need to define week
+    postWorkout(userId, programId, workoutKey, workoutData)
     reset();
   }
 
