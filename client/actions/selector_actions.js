@@ -15,7 +15,7 @@ function receiveWorkout(selectedWorkout) {
 function setSchedule(schedule) {
   return {
     type: 'SET_SCHEDULE',
-    schedule,
+    schedule, // { phase: #, week: #, day: # }
   };
 }
 

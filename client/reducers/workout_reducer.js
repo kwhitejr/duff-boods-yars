@@ -12,14 +12,10 @@ const INITIAL_STATE = {
 };
 
 function setExerciseData(state, exerciseName, value) {
-  console.log(state);
-  console.log(exerciseName);
-  console.log(value);
-  console.log(state.exercises[exerciseName]);
-
   if (!state.exercises[exerciseName]) {
     return { ...state,  
       exercises: {
+        ...state.exercises,
         [exerciseName]: [value]
       }
     };

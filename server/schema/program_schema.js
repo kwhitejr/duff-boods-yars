@@ -12,7 +12,7 @@ const programSchema = new Schema({
   start_date:     { type: Date, required: false },
   stop_date:      { type: Date, required: false },
   program_type:   { type: String, required: true },
-  workouts:       { type: Array, default: [] },
+  workouts:       [{ type: ObjectId, ref: 'Workout' }],
 });
 
 export default mongoose.model('Program', programSchema);

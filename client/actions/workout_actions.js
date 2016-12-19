@@ -82,8 +82,8 @@ export function getCurrentProgram(userId) {
   return (dispatch) => {
     axios.get(`${API_URL}/data/program?user_id=${userId}`)
       .then(response => {
-        console.log("action response", response);
         dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.currentProgram }); // put program info into workout store
+        // dispatch(getCurrentWorkout()) // need a function that checks currentProgram for where user left off; esp. to determine current week
         dispatch(push('/workout'));
       })
       .catch((error) => {

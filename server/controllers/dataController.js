@@ -3,6 +3,7 @@ import Workout from '../schema/workout_schema';
 import Program from '../schema/program_schema';
 
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 exports.postWorkout = (req, res, next) => {
   const workout_key = req.body.workoutKey; // [phase, day, week]
@@ -108,7 +109,6 @@ exports.postProgram = (req, res, next) => {
 }
 
 exports.getCurrentProgram = (req, res, next) => {
-  const ObjectId = mongoose.Types.ObjectId;
   const user_id = req.query.user_id;
   
   if (!user_id) {
