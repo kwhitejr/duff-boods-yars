@@ -7,16 +7,27 @@ const SET_PROGRAM_TYPE = 'SET_PROGRAM_TYPE';
 
 const INITIAL_STATE = {
   error: '',
-  workout: null,
+  exercises: {},
   program: null,
 };
 
 function setExerciseData(state, exerciseName, value) {
-  if (!state[exerciseName]) {
-    return Object.assign({}, state, { [exerciseName]: [value] });
+  console.log(state);
+  console.log(exerciseName);
+  console.log(value);
+  console.log(state.exercises[exerciseName]);
+
+  if (!state.exercises[exerciseName]) {
+    return { ...state,  
+      exercises: {
+        [exerciseName]: [value]
+      }
+    };
   } else {
     return update(state, {
-      [exerciseName]: { $push: [value] },
+      exercises: {
+        [exerciseName]: { $push: [value] },
+      }
     });
   }
 }
@@ -26,7 +37,7 @@ export default function (state = INITIAL_STATE, action) {
     case SET_EXERCISE_DATA:
       return setExerciseData(state, action.exerciseName, action.value);
     case CLEAR_WORKOUT_STORE:
-      return { ...state, workout: null };
+      return { ...state, exercises: {} };
     case DATA_ERROR:
       return { ...state, error: action.payload };
     case SET_PROGRAM_TYPE:

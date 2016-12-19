@@ -32,7 +32,9 @@ class WorkoutContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  selectedWorkout: state.selector.selectedWorkout,
+  selectedWorkout:  state.selector.selectedWorkout,
+  userId:           state.workout.program.user_id,
+  programId:        state.workout.program._id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

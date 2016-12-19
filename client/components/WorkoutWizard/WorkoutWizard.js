@@ -59,8 +59,8 @@ class WorkoutWizard extends Component {
   }
 
   handleSubmitWorkout() {
-    const { postWorkout } = this.props;
-    postWorkout(/*userID, programID, workoutKey, workoutData*/)
+    const { postWorkout, userId, programId } = this.props;
+    postWorkout(/*userId, programId, workoutKey, workoutData*/)
     reset();
   }
 
