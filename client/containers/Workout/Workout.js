@@ -6,7 +6,7 @@ import { reset } from 'redux-form';
 import WorkoutWizard from 'components/WorkoutWizard';
 import SelectorWizard from 'components/SelectorWizard';
 
-import { gatherFormData, postWorkoutData } from 'actions/workout_actions';
+import { gatherFormData, postWorkout } from 'actions/workout_actions';
 import { fetchWorkout } from 'actions/selector_actions';
 
 class WorkoutContainer extends Component {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   gatherFormData:     (exerciseName) => dispatch(gatherFormData(exerciseName)),
-  postWorkoutData:    (data) => dispatch(postWorkoutData(data)),
+  postWorkout:     (userId, programId, workoutKey, workoutData) => dispatch(postWorkout(userId, programId, workoutKey, workoutData)),
   reset:              () => dispatch(reset('workout')),
   fetchWorkout:       () => dispatch(fetchWorkout()),
 });

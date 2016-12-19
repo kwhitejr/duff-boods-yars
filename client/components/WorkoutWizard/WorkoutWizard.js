@@ -32,15 +32,16 @@ class WorkoutWizard extends Component {
   }
 
   nextExercise() {
-    const { selectedWorkout, gatherFormData, reset } = this.props
-    const { exerciseIndex } = this.state
-    gatherFormData(selectedWorkout.exercises[exerciseIndex].name);
-    reset();
+    const { selectedWorkout } = this.props;
+    this.handleSubmitExercise();
     this.setState({ 
       exerciseIndex: this.state.exerciseIndex + 1, // number represents array index
       page: 1,
       setIndex: 0,
-    }) 
+    });
+    if (this.state.exerciseIndex === selectedWorkout.exercises.length) {
+      this.handleSubmitWorkout()
+    } 
   }
 
   previousExercise() {
@@ -48,6 +49,19 @@ class WorkoutWizard extends Component {
       exerciseIndex: this.state.exerciseIndex - 1,
       page: 1, 
     }) 
+  }
+
+  handleSubmitExercise() {
+    const { selectedWorkout, gatherFormData, reset } = this.props;
+    const { exerciseIndex } = this.state;
+    gatherFormData(selectedWorkout.exercises[exerciseIndex].name);
+    reset();
+  }
+
+  handleSubmitWorkout() {
+    const { postWorkout } = this.props;
+    postWorkout(/*userID, programID, workoutKey, workoutData*/)
+    reset();
   }
 
   render() {

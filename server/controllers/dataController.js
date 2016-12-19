@@ -4,7 +4,7 @@ import Program from '../schema/program_schema';
 
 const mongoose = require('mongoose');
 
-exports.submitWorkout = (req, res, next) => {
+exports.postWorkout = (req, res, next) => {
   const workout_key = req.body.workoutKey; // [phase, day, week]
   const workoutData = req.body.workoutData; // { exercise: [], ... }
   const user_id = req.body.userId;
@@ -58,7 +58,7 @@ exports.submitWorkout = (req, res, next) => {
   });
 }
 
-exports.createNewProgram = (req, res, next) => {
+exports.postProgram = (req, res, next) => {
   const programType = req.body.programType;
   const user_id = req.body.userId;
   const last_modified = new Date;
@@ -108,8 +108,9 @@ exports.createNewProgram = (req, res, next) => {
 }
 
 exports.getCurrentProgram = (req, res, next) => {
+  const ObjectId = mongoose.Types.ObjectId;
   const user_id = req.query.user_id;
-  console.log(user_id);
+  // console.log(user_id);
   
   if (!user_id) {
     return res.status(422).send({ error: 'No user ID was provided.' });
@@ -117,9 +118,12 @@ exports.getCurrentProgram = (req, res, next) => {
 
   // Get all Programs for user and sort descending
   Program
-    .find({ user_id })
+    .find({ user_id: ObjectId(user_id) })
     .sort({ last_modified: 'desc' })
     .exec((err, programs) => {
+
+      // Check output
+      console.log("user programs:", programs);
     
       // If error, return error
       if (err) { return next(err); }
@@ -132,6 +136,8 @@ exports.getCurrentProgram = (req, res, next) => {
       // console.log(programs); 
 
       const currentProgram = programs[0]; // if sort desc worked, most current is at index 0
+
+      console.log("currentProgram:", currentProgram)
 
       res.status(200).json({
         currentProgram,

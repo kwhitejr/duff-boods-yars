@@ -36,18 +36,16 @@ module.exports = function (app) {
   // Set data routes as subgroup/middleware to apiRoutes
   apiRoutes.use('/data', dataRoutes);
 
-  // Workout route
-
+  // WORKOUT ROUTES
   // Submit workout data
-  dataRoutes.post('/workout', DataController.submitWorkout);
+  dataRoutes.post('/workout', DataController.postWorkout);
 
-  // Program route
-
+  // PROGRAM ROUTES
   // Get current program
   dataRoutes.get('/program', DataController.getCurrentProgram);
 
   // Create new program
-  dataRoutes.post('/program', DataController.createNewProgram);
+  dataRoutes.post('/program', DataController.postProgram);
 
   //= ========================
   // API Routes Wrapper

@@ -34,6 +34,7 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+// refactor setExerciseData with gatherFormData
 function setExerciseData(exerciseName, value) {
   return {
     type: 'SET_EXERCISE_DATA',
@@ -50,9 +51,9 @@ export function gatherFormData(exerciseName) {
   };
 }
 
-export function postNewWorkout({ userId, workoutKey, workoutData }) {
+export function postWorkout({ userId, programId, workoutKey, workoutData }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/data/workout`, { userId, workoutKey, workoutData })
+    axios.post(`${API_URL}/data/workout`, { userId, programId, workoutKey, workoutData })
       .then(response => {
         dispatch({ type: CLEAR_WORKOUT_STORE });
         dispatch(push('/'));
@@ -63,7 +64,7 @@ export function postNewWorkout({ userId, workoutKey, workoutData }) {
   };
 }
 
-export function postNewProgram(userId, programType) {
+export function postProgram(userId, programType) {
   return (dispatch) => {
     axios.post(`${API_URL}/data/program`, { userId, programType })
       .then(response => {
@@ -81,7 +82,8 @@ export function getCurrentProgram(userId) {
   return (dispatch) => {
     axios.get(`${API_URL}/data/program?user_id=${userId}`)
       .then(response => {
-        dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.program }); // put program info into workout store
+        console.log("action response", response);
+        dispatch({ type: SET_PROGRAM_TYPE, payload: response.data.currentProgram }); // put program info into workout store
         dispatch(push('/workout'));
       })
       .catch((error) => {

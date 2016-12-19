@@ -5,7 +5,7 @@ import cookie from 'react-cookie';
 
 import styles from './Home.css';
 
-import { postNewProgram, getCurrentProgram } from 'actions/workout_actions';
+import { postProgram, getCurrentProgram } from 'actions/workout_actions';
 
 const user = cookie.load('user');
 
@@ -39,12 +39,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  postNewProgram: (userId, programType) => dispatch(postNewProgram(userId, programType)),
+  postProgram: (userId, programType) => dispatch(postProgram(userId, programType)),
   getCurrentProgram: (userId) => dispatch(getCurrentProgram(userId)),
 });
 
 Home.propTypes = {
-  postNewProgram: PropTypes.func.isRequired,
+  postProgram: PropTypes.func.isRequired,
   getCurrentProgram: PropTypes.func.isRequired,
 };
 
