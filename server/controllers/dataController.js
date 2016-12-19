@@ -121,9 +121,6 @@ exports.getCurrentProgram = (req, res, next) => {
     .find({ user_id: ObjectId(user_id) })
     .sort({ last_modified: 'desc' })
     .exec((err, programs) => {
-
-      // Check output
-      console.log("user programs:", programs);
     
       // If error, return error
       if (err) { return next(err); }
@@ -136,8 +133,6 @@ exports.getCurrentProgram = (req, res, next) => {
       // console.log(programs); 
 
       const currentProgram = programs[0]; // if sort desc worked, most current is at index 0
-
-      console.log("currentProgram:", currentProgram)
 
       res.status(200).json({
         currentProgram,
