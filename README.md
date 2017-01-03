@@ -58,3 +58,4 @@ $ npm run test
 #### Other
 - [ ] Data Visualizations
 - [ ] GraphQL Queries
+- [ ] Refactor Complex Actions w/redux-saga
