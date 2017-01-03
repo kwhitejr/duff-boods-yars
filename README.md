@@ -39,19 +39,22 @@ $ npm run test
 ```
 
 ## TO-DO List
-##### Tests
+#### Tests  
 - [ ] Reducers
 - [ ] Async (redux-thunk) Actions
 - [ ] AJAX Requests
 - [ ] Mongoose Models
-##### Authentications
+
+#### Authentications
 - [X] JWT
 - [ ] Google
 - [ ] Facebook
 - [ ] Twitter
-##### UX
+
+#### UX
 - [ ] Material UI
 - [X] Post CSS
-##### Other
+
+#### Other
 - [ ] Data Visualizations
 - [ ] GraphQL Queries
