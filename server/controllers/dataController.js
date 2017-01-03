@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.postWorkout = (req, res, next) => {
-  console.log(req);
   const workout_key = req.body.workoutKey; // [phase, day, week]
   const workoutData = req.body.workoutData; // { exercise: [], ... }
   const user_id = req.body.userId;
@@ -37,6 +36,8 @@ exports.postWorkout = (req, res, next) => {
     program_id: ObjectId(program_id), 
     workout_key: workout_key 
   }, (err, existingWorkout) => {
+
+    console.log("this workout already exists", existingWorkout);
     // If error, return error
     if (err) { return next(err); }
 
@@ -52,13 +53,14 @@ exports.postWorkout = (req, res, next) => {
       workout_key,
       exercises: workoutData,
     });
+    console.log(workout)
 
     workout.save((err, workout) => {
       if (err) { return next(err); }
 
       // update user cookie?
       res.status(200).send({
-        msg: 'Success',
+        workout
       });
     });
   });
