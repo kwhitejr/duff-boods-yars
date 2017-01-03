@@ -1,19 +1,8 @@
-# YARS
-**Yet Another React Starter**
+# Duff Boods
+**Get buff**
 
-## Features
-* Webpack
-* React
-* React HMR
-* Redux
-* Redux DevTools
-* React Router
-* PostCSS
-* CSS Modules
-* Babel
-* ESLint
-* Stylelint
-* NPM Scripts
+## Objective
+Some words go here.
 
 
 ## Quick Start
@@ -31,14 +20,37 @@ $ cd yars
 $ npm install
 ```
 
-#### Launch dev environment
+#### Launch front-end dev environment
 
 ```bash
 $ npm run dev
 ```
 
-#### Launch prod environment
+#### Launch server
 
 ```bash
-$ npm run prod
+$ npm run server
 ```
+
+#### Launch tests
+
+```bash
+$ npm run test
+```
+
+## TO-DO List
+- [ ] Tests
+-- [ ] Reducers
+-- [ ] Async (redux-thunk) Actions
+-- [ ] AJAX Requests
+-- [ ] Mongoose Models
+- [ ] Authentications
+-- [X] JWT
+-- [ ] Google
+-- [ ] Facebook
+-- [ ] Twitter
+- [ ] UX
+-- [ ] Material UI
+-- [X] Post CSS
+- [ ] Data Visualizations
+- [ ] GraphQL Queries
