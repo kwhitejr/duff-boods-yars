@@ -17,7 +17,7 @@ describe('auth_reducer', () => {
     };
     const nextState = authReducer(initialState, action);
 
-    expect(nextState).to.equal({
+    expect(nextState).to.deep.equal({
       error: '', 
       message: '', 
       content: '', 
