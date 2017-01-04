@@ -5,10 +5,10 @@ import { thirdEdition } from 'config/workouts';
 export const  RECEIVE_WORKOUT = 'RECEIVE_WORKOUT',
               SET_SCHEDULE = 'SET_SCHEDULE';
 
-function receiveWorkout(selectedWorkout) {
+function receiveWorkout(workout) {
   return {
     type: 'RECEIVE_WORKOUT',
-    selectedWorkout,
+    workout,
   };
 }
 
