@@ -40,7 +40,7 @@ $ npm run test
 
 ## TO-DO List
 #### Tests  
-- [ ] Reducers
+- [X] Reducers
 - [ ] Async (redux-thunk) Actions
 - [ ] AJAX Requests
 - [ ] Mongoose Models
