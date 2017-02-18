@@ -36,13 +36,14 @@ $ npm run server
 
 ```bash
 $ npm run test
+$ npm run test:watch
 ```
 
 ## TO-DO List
 #### Tests  
 - [X] Reducers
 - [ ] Async (redux-thunk) Actions
-- [ ] AJAX Requests
+- [ ] HTTP Requests
 - [ ] Mongoose Models
 
 #### Authentications
